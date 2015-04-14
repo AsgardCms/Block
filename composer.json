@@ -24,6 +24,5 @@
       "email": "n.widart@gmail.com"
     }
   ],
-  "minimum-stability": "dev",
-  "prefer-stable": true
+  "minimum-stability": "dev"
 }
