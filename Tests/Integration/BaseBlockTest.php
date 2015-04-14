@@ -58,5 +58,14 @@ abstract class BaseBlockTest extends TestCase
             '--database' => 'sqlite',
             '--path' => $migrationsPath,
         ]);
+        // We empty all tables
+        $artisan->call('migrate:reset', [
+            '--database' => 'sqlite',
+        ]);
+        // Migrate
+        $artisan->call('migrate', [
+            '--database' => 'sqlite',
+            '--path'     => $migrationsPath,
+        ]);
     }
 }
