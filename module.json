@@ -1,0 +1,16 @@
+{
+    "name": "Block",
+    "alias": "block",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Block\\Providers\\BlockServiceProvider",
+        "Modules\\Block\\Providers\\RouteServiceProvider"
+    ],
+    "aliases":{},
+    "files": [
+        "composers.php"
+    ]
+}
