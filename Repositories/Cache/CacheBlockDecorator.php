@@ -27,4 +27,20 @@ class CacheBlockDecorator extends BaseCacheDecorator implements BlockRepository
                 }
             );
     }
+
+    /**
+     * Get a block by its name if it's online
+     * @param string $name
+     * @return object
+     */
+    public function get($name)
+    {
+        return $this->cache
+            ->tags($this->entityName, 'global')
+            ->remember("{$this->locale}.{$this->entityName}.get", $this->cacheTime,
+                function () use ($name) {
+                    return $this->repository->get($name);
+                }
+            );
+    }
 }

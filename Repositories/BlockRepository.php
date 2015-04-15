@@ -10,4 +10,11 @@ interface BlockRepository extends BaseRepository
      * @return object
      */
     public function allOnlineInLang($lang);
+
+    /**
+     * Get a block by its name if it's online
+     * @param string $name
+     * @return object
+     */
+    public function get($name);
 }
