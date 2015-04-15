@@ -1,6 +1,5 @@
 <?php namespace Modules\Block\Tests\Integration;
 
-use Faker\Factory;
 use Orchestra\Testbench\TestCase;
 
 abstract class BaseBlockTest extends TestCase
