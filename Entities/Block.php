@@ -8,6 +8,9 @@ class Block extends Model
     use Translatable;
 
     protected $table = 'block__blocks';
-    public $translatedAttributes = ['status', 'body'];
-    protected $fillable = ['name', 'status', 'body'];
+    public $translatedAttributes = ['online', 'body'];
+    protected $fillable = ['name', 'online', 'body'];
+    protected $casts = [
+        'online' => 'bool',
+    ];
 }

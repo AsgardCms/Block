@@ -5,6 +5,6 @@ use Illuminate\Database\Eloquent\Model;
 class BlockTranslation extends Model
 {
     public $timestamps = false;
-    protected $fillable = ['status', 'body'];
+    protected $fillable = ['online', 'body'];
     protected $table = 'block__blocks_translations';
 }
