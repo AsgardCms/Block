@@ -1,5 +1,6 @@
 <?php namespace Modules\Block\Providers;
 
+use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 use Modules\Block\Entities\Block;
 use Modules\Block\Repositories\Cache\CacheBlockDecorator;
@@ -20,6 +21,7 @@ class BlockServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerBindings();
+        $this->registerFacade();
     }
 
     /**
@@ -45,5 +47,11 @@ class BlockServiceProvider extends ServiceProvider
                 return new CacheBlockDecorator($repository);
             }
         );
+    }
+
+    private function registerFacade()
+    {
+        $aliasLoader = AliasLoader::getInstance();
+        $aliasLoader->alias('Block', 'Modules\Block\Facades\BlockFacade');
     }
 }
