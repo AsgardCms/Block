@@ -1,6 +1,7 @@
 <?php namespace Modules\Block\Tests\Integration;
 
 use Faker\Factory;
+use Illuminate\Support\Facades\App;
 
 class BlockRepositoryTest extends BaseBlockTest
 {
@@ -31,6 +32,38 @@ class BlockRepositoryTest extends BaseBlockTest
         $this->assertCount(4, $allBlocks);
         $this->assertCount(2, $onlineBlocksFr);
         $this->assertCount(3, $onlineBlocksEn);
+    }
+
+    /** @test */
+    public function it_gets_block_by_name()
+    {
+        $this->block->create(['name' => 'testBlock', 'en' => ['body' => 'lorem en', 'online' => true], 'fr' => ['body' => 'lorem fr', 'online' => true]]);
+        $this->createRandomBlock(true, true);
+        $this->createRandomBlock(true, true);
+        $this->createRandomBlock(true, true);
+
+        $block = $this->block->get('testBlock');
+
+        $this->assertEquals('testBlock', $block->name);
+        $this->assertEquals('lorem en', $block->translate('en')->body);
+    }
+
+    /** @test */
+    public function it_gets_block_by_name_if_online()
+    {
+        $this->block->create(['name' => 'testBlock', 'en' => ['body' => 'lorem en', 'online' => true], 'fr' => ['body' => 'lorem fr', 'online' => false]]);
+        $this->createRandomBlock(true, true);
+        $this->createRandomBlock(true, true);
+        $this->createRandomBlock(true, true);
+
+        App::setLocale('fr');
+        $this->setExpectedException('Illuminate\Database\Eloquent\ModelNotFoundException');
+        $this->block->get('testBlock');
+
+        App::setLocale('en');
+        $block = $this->block->get('testBlock');
+        $this->assertEquals('testBlock', $block->name);
+        $this->assertEquals('lorem en', $block->translate('en')->body);
     }
 
     /**
