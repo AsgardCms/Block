@@ -1,6 +1,6 @@
 {
   "name": "asgardcms/block",
-  "description": "",
+  "description": "A module to create small blocks of content to display anywhere on the site.",
   "type": "asgard-module",
   "require": {
     "php": ">=5.4",
