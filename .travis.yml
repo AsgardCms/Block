@@ -12,3 +12,6 @@ before_script:
 
 script:
   - phpunit
+
+notifications:
+  slack: asgardcms:oJ1NpQQ7t2vslPIlKzZHVvZE
