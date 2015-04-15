@@ -19,7 +19,7 @@ class CreateBlocksTables extends Migration
 
         Schema::create('block__blocks_translations', function (Blueprint $table) {
             $table->increments('id');
-            $table->tinyInteger('status')->nullable();
+            $table->tinyInteger('online')->nullable();
             $table->text('body')->nullable();
 
             $table->integer('block_id')->unsigned();
