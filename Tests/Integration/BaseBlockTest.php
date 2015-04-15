@@ -45,7 +45,7 @@ abstract class BaseBlockTest extends TestCase
             'database' => ':memory:',
             'prefix' => '',
         ));
-        $app['config']->set('translatable.locales', ['en', 'nl']);
+        $app['config']->set('translatable.locales', ['en', 'fr']);
     }
 
     private function resetDatabase()
