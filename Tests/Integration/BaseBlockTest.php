@@ -51,12 +51,12 @@ abstract class BaseBlockTest extends TestCase
     private function resetDatabase()
     {
         // Relative to the testbench app folder: vendors/orchestra/testbench/src/fixture
-        $migrationsPath = 'Database/Migrations';
+        $migrationsPath = realpath('Database/Migrations');
         $artisan = $this->app->make('Illuminate\Contracts\Console\Kernel');
         // Makes sure the migrations table is created
         $artisan->call('migrate', [
             '--database' => 'sqlite',
-            '--path' => $migrationsPath,
+            '--realpath' => $migrationsPath,
         ]);
         // We empty all tables
         $artisan->call('migrate:reset', [
@@ -65,7 +65,7 @@ abstract class BaseBlockTest extends TestCase
         // Migrate
         $artisan->call('migrate', [
             '--database' => 'sqlite',
-            '--path'     => $migrationsPath,
+            '--realpath'     => $migrationsPath,
         ]);
     }
 }
