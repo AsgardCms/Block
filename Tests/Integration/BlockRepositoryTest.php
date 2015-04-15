@@ -2,6 +2,7 @@
 
 use Faker\Factory;
 use Illuminate\Support\Facades\App;
+use Modules\Block\Facades\BlockFacade as Block;
 
 class BlockRepositoryTest extends BaseBlockTest
 {
@@ -62,6 +63,19 @@ class BlockRepositoryTest extends BaseBlockTest
 
         App::setLocale('en');
         $block = $this->block->get('testBlock');
+        $this->assertEquals('testBlock', $block->name);
+        $this->assertEquals('lorem en', $block->translate('en')->body);
+    }
+
+    /** @test */
+    public function it_gets_block_by_facade()
+    {
+        $this->block->create(['name' => 'testBlock', 'en' => ['body' => 'lorem en', 'online' => true], 'fr' => ['body' => 'lorem fr', 'online' => false]]);
+        $this->createRandomBlock(true, true);
+        $this->createRandomBlock(true, true);
+
+        $block = Block::get('testBlock');
+
         $this->assertEquals('testBlock', $block->name);
         $this->assertEquals('lorem en', $block->translate('en')->body);
     }
