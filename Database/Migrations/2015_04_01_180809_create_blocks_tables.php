@@ -17,10 +17,10 @@ class CreateBlocksTables extends Migration
             $table->timestamps();
         });
 
-        Schema::create('block__block_translations', function (Blueprint $table) {
+        Schema::create('block__blocks_translations', function (Blueprint $table) {
             $table->increments('id');
-            $table->tinyInteger('status');
-            $table->text('body');
+            $table->tinyInteger('status')->nullable();
+            $table->text('body')->nullable();
 
             $table->integer('block_id')->unsigned();
             $table->string('locale')->index();
@@ -36,6 +36,6 @@ class CreateBlocksTables extends Migration
     public function down()
     {
         Schema::drop('block__blocks');
-        Schema::drop('block__block_translations');
+        Schema::drop('block__blocks_translations');
     }
 }
