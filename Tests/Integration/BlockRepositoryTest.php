@@ -3,10 +3,14 @@
 class BlockRepositoryTest extends BaseBlockTest
 {
     /** @test */
-    public function it_is_true()
+    public function it_creates_blocks()
     {
-        $this->block->create(['name' => 'testBlock', 'en' => ['body' => 'lorem']]);
+        $block = $this->block->create(['name' => 'testBlock', 'en' => ['body' => 'lorem en'], 'fr' => ['body' => 'lorem fr']]);
         $blocks = $this->block->all();
-        dd($blocks);
+
+        $this->assertCount(1, $blocks);
+        $this->assertEquals('testBlock', $block->name);
+        $this->assertEquals('lorem en', $block->translate('en')->body);
+        $this->assertEquals('lorem fr', $block->translate('fr')->body);
     }
 }
