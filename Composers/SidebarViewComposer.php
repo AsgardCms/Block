@@ -3,12 +3,17 @@
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Sidebar\SidebarGroup;
 use Maatwebsite\Sidebar\SidebarItem;
+use Maatwebsite\Sidebar\SidebarManager;
 use Modules\Core\Composers\BaseSidebarViewComposer;
 
 class SidebarViewComposer extends BaseSidebarViewComposer
 {
     public function compose(View $view)
     {
+        if (! $view->sidebar instanceof SidebarManager) {
+            return;
+        }
+
         $view->sidebar->group(trans('core::sidebar.content'), function (SidebarGroup $group) {
             $group->addItem(trans('block::blocks.title.blocks'), function (SidebarItem $item) {
                 $item->authorize(
