@@ -12,12 +12,14 @@ class CreateBlocksTables extends Migration
     public function up()
     {
         Schema::create('block__blocks', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('name');
             $table->timestamps();
         });
 
         Schema::create('block__blocks_translations', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->tinyInteger('online')->nullable();
             $table->text('body')->nullable();
