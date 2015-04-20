@@ -13,7 +13,7 @@ class BlockRepositoryTest extends BaseBlockTest
         $blocks = $this->block->all();
 
         $this->assertCount(1, $blocks);
-        $this->assertEquals('testBlock', $block->name);
+        $this->assertEquals('testblock', $block->name);
         $this->assertEquals('lorem en', $block->translate('en')->body);
         $this->assertEquals('lorem fr', $block->translate('fr')->body);
     }
@@ -38,14 +38,14 @@ class BlockRepositoryTest extends BaseBlockTest
     /** @test */
     public function it_gets_block_by_name()
     {
-        $this->block->create(['name' => 'testBlock', 'en' => ['body' => 'lorem en', 'online' => true], 'fr' => ['body' => 'lorem fr', 'online' => true]]);
+        $this->block->create(['name' => 'testblock', 'en' => ['body' => 'lorem en', 'online' => true], 'fr' => ['body' => 'lorem fr', 'online' => true]]);
         $this->createRandomBlock(true, true);
         $this->createRandomBlock(true, true);
         $this->createRandomBlock(true, true);
 
-        $block = $this->block->get('testBlock');
+        $block = $this->block->get('testblock');
 
-        $this->assertEquals('testBlock', $block->name);
+        $this->assertEquals('testblock', $block->name);
         $this->assertEquals('lorem en', $block->translate('en')->body);
     }
 
@@ -70,14 +70,22 @@ class BlockRepositoryTest extends BaseBlockTest
     /** @test */
     public function it_gets_block_by_facade()
     {
-        $this->block->create(['name' => 'testBlock', 'en' => ['body' => 'lorem en', 'online' => true], 'fr' => ['body' => 'lorem fr', 'online' => false]]);
+        $this->block->create(['name' => 'testblock', 'en' => ['body' => 'lorem en', 'online' => true], 'fr' => ['body' => 'lorem fr', 'online' => false]]);
         $this->createRandomBlock(true, true);
         $this->createRandomBlock(true, true);
 
-        $block = Block::get('testBlock');
+        $block = Block::get('testblock');
 
-        $this->assertEquals('testBlock', $block->name);
+        $this->assertEquals('testblock', $block->name);
         $this->assertEquals('lorem en', $block->translate('en')->body);
+    }
+
+    /** @test */
+    public function it_slugifies_the_name_property()
+    {
+        $block = $this->block->create(['name' => 'test block', 'en' => ['body' => 'lorem en', 'online' => true], 'fr' => ['body' => 'lorem fr', 'online' => false]]);
+
+        $this->assertEquals('test-block', $block->name);
     }
 
     /**
