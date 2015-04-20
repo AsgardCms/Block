@@ -20,7 +20,7 @@ class EloquentBlockRepository extends EloquentBaseRepository implements BlockRep
 
     /**
      * @param $model
-     * @param  array  $data
+     * @param  array $data
      * @return object
      */
     public function update($model, $data)
@@ -75,6 +75,102 @@ class EloquentBlockRepository extends EloquentBaseRepository implements BlockRep
      */
     private function normalize(array &$data)
     {
-        $data['name'] = str_slug($data['name']);
+        $data['name'] = $this->makeNameUnique($data['name']);
+    }
+
+    /**
+     * Make the name unique by appending a counter
+     * @param string $slug
+     * @return string
+     */
+    private function makeNameUnique($slug)
+    {
+        $slug = str_slug($slug);
+
+        $list = $this->getExistingSlugs($slug);
+
+        if (
+            $this->isEmptyArray($list) ||
+            ! $this->isSlugInList($slug, $list) ||
+            ($this->isForModel($list) && $this->slugIsInList($slug, $list))
+        ) {
+            return $slug;
+        }
+
+        // map our list to keep only the increments
+        $len = strlen($slug.'-');
+
+        array_walk($list, function(&$value, $key) use ($len)
+        {
+            $value = intval(substr($value, $len));
+        });
+
+        return $slug . '-' . $this->findHighestIncrement($list);
+    }
+
+    /**
+     * Get the existing models matching the given slug
+     * @param string $slug
+     * @return array
+     */
+    protected function getExistingSlugs($slug)
+    {
+        $query = $this->model->where('name', 'LIKE', $slug . '%');
+
+        $list = $query->lists('name', $this->model->getKeyName());
+
+        return $list;
+    }
+
+    /**
+     * Check if given array is empty
+     * @param array $list
+     * @return bool
+     */
+    private function isEmptyArray(array $list)
+    {
+        return count($list) === 0;
+    }
+
+    /**
+     * Check if the given slug is present in the given array
+     * @param string $slug
+     * @param array $list
+     * @return bool
+     */
+    private function isSlugInList($slug, array $list)
+    {
+        return in_array($slug, $list);
+    }
+
+    /**
+     * Check if we have our model
+     * @param $list
+     * @return bool
+     */
+    private function isForModel($list)
+    {
+        return array_key_exists($this->model->getKey(), $list);
+    }
+
+    /**
+     * Check if the given slug is in the given list
+     * @param string $slug
+     * @param array $list
+     * @return bool
+     */
+    private function slugIsInList($slug, array $list)
+    {
+        return $list[$this->model->getKey()] === $slug;
+    }
+
+    /**
+     * @return mixed
+     */
+    private function findHighestIncrement($list)
+    {
+        rsort($list);
+        $increment = reset($list) + 1;
+        return $increment;
     }
 }
