@@ -8,6 +8,31 @@ use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
 class EloquentBlockRepository extends EloquentBaseRepository implements BlockRepository
 {
     /**
+     * @param mixed $data
+     * @return mixed
+     */
+    public function create($data)
+    {
+        $this->normalize($data);
+
+        return $this->model->create($data);
+    }
+
+    /**
+     * @param $model
+     * @param  array  $data
+     * @return object
+     */
+    public function update($model, $data)
+    {
+        $this->normalize($data);
+
+        $model->update($data);
+
+        return $model;
+    }
+
+    /**
      * Get all online blocks in the given language
      * @param string $lang
      * @return object
@@ -42,5 +67,14 @@ class EloquentBlockRepository extends EloquentBaseRepository implements BlockRep
     private function getCurrentLocale()
     {
         return App::getLocale();
+    }
+
+    /**
+     * Normalize the request data
+     * @param array $data
+     */
+    private function normalize(array &$data)
+    {
+        $data['name'] = str_slug($data['name']);
     }
 }
