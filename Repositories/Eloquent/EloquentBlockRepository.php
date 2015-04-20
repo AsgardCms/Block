@@ -98,10 +98,9 @@ class EloquentBlockRepository extends EloquentBaseRepository implements BlockRep
         }
 
         // map our list to keep only the increments
-        $len = strlen($slug.'-');
+        $len = strlen($slug . '-');
 
-        array_walk($list, function(&$value, $key) use ($len)
-        {
+        array_walk($list, function (&$value, $key) use ($len) {
             $value = intval(substr($value, $len));
         });
 
@@ -113,7 +112,7 @@ class EloquentBlockRepository extends EloquentBaseRepository implements BlockRep
      * @param string $slug
      * @return array
      */
-    protected function getExistingSlugs($slug)
+    private function getExistingSlugs($slug)
     {
         $query = $this->model->where('name', 'LIKE', $slug . '%');
 
