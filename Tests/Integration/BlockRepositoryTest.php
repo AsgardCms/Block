@@ -88,6 +88,27 @@ class BlockRepositoryTest extends BaseBlockTest
         $this->assertEquals('test-block', $block->name);
     }
 
+
+    public function it_makes_name_unique()
+    {
+        $this->block->create(['name' => 'test block']);
+        $block = $this->block->create(['name' => 'test block']);
+
+        $this->assertEquals('test-block-1', $block->name);
+    }
+
+    /** @test */
+    public function it_increments_name_if_not_unique()
+    {
+        $this->block->create(['name' => 'test block']);
+        $this->block->create(['name' => 'test block']);
+        $block1 = $this->block->create(['name' => 'test block']);
+        $block2 = $this->block->create(['name' => 'test block']);
+
+        $this->assertEquals('test-block-2', $block1->name);
+        $this->assertEquals('test-block-3', $block2->name);
+    }
+
     /**
      * Create a block with random properties
      * @param bool $statusEn
