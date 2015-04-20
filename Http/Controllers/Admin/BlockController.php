@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Laracasts\Flash\Flash;
+use Modules\Block\Entities\Block;
+use Modules\Block\Http\Requests\CreateBlockRequest;
+use Modules\Block\Http\Requests\UpdateBlockRequest;
 use Modules\Block\Repositories\BlockRepository;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
@@ -44,10 +47,10 @@ class BlockController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request $request
+     * @param  CreateBlockRequest $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(CreateBlockRequest $request)
     {
         $this->block->create($request->all());
 
@@ -71,10 +74,10 @@ class BlockController extends AdminBaseController
      * Update the specified resource in storage.
      *
      * @param  Block $block
-     * @param  Request $request
+     * @param  UpdateBlockRequest $request
      * @return Response
      */
-    public function update(Block $block, Request $request)
+    public function update(Block $block, UpdateBlockRequest $request)
     {
         $this->block->update($block, $request->all());
 
