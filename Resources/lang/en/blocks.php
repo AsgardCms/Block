@@ -21,7 +21,7 @@ return [
     ],
     'validation' => [
     ],
-    'status' => 'Status',
+    'online' => 'Online',
     'name' => 'Name',
     'body' => 'Body',
 ];

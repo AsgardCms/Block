@@ -29,7 +29,7 @@
                         <thead>
                         <tr>
                             <th>Id</th>
-                            <th>{{ trans('block::blocks.status') }}</th>
+                            <th>{{ trans('block::blocks.online') }}</th>
                             <th>{{ trans('block::blocks.name') }}</th>
                             <th>{{ trans('core::core.table.created at') }}</th>
                             <th>{{ trans('core::core.table.actions') }}</th>
@@ -72,7 +72,7 @@
                         <tfoot>
                         <tr>
                             <th>Id</th>
-                            <th>{{ trans('block::blocks.status') }}</th>
+                            <th>{{ trans('block::blocks.online') }}</th>
                             <th>{{ trans('block::blocks.name') }}</th>
                             <th>{{ trans('core::core.table.created at') }}</th>
                             <th>{{ trans('core::core.table.actions') }}</th>
