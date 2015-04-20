@@ -2,7 +2,7 @@
 
 use Modules\Core\Internationalisation\BaseFormRequest;
 
-class CreateBlockRequest extends BaseFormRequest
+class UpdateBlockRequest extends BaseFormRequest
 {
     public function translationRules()
     {
