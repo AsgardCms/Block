@@ -88,7 +88,6 @@ class BlockRepositoryTest extends BaseBlockTest
         $this->assertEquals('test-block', $block->name);
     }
 
-
     public function it_makes_name_unique()
     {
         $this->block->create(['name' => 'test block']);

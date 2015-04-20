@@ -170,6 +170,7 @@ class EloquentBlockRepository extends EloquentBaseRepository implements BlockRep
     {
         rsort($list);
         $increment = reset($list) + 1;
+
         return $increment;
     }
 }

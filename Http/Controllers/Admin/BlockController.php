@@ -1,6 +1,5 @@
 <?php namespace Modules\Block\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Laracasts\Flash\Flash;
 use Modules\Block\Entities\Block;
 use Modules\Block\Http\Requests\CreateBlockRequest;
