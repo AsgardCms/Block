@@ -2,7 +2,7 @@
 
 return [
     'title' => [
-        'blocks' => 'Block',
+        'blocks' => 'Blocks',
         'create block' => 'Create a block',
         'edit block' => 'Edit a block',
     ],
