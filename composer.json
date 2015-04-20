@@ -2,6 +2,7 @@
   "name": "asgardcms/block",
   "description": "A module to create small blocks of content to display anywhere on the site.",
   "type": "asgard-module",
+  "license": "MIT",
   "require": {
     "php": ">=5.4",
     "composer/installers": "~1.0",
