@@ -19,15 +19,15 @@
 @section('content')
     {!! Form::open(['route' => ['admin.block.block.store'], 'method' => 'post']) !!}
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-10">
             <div class="nav-tabs-custom">
-                @include('partials.form-tab-headers')
+                @include('partials.form-tab-headers', ['fields' => ['slug', 'body']])
                 <div class="tab-content">
                     <?php $i = 0; ?>
                     <?php foreach (LaravelLocalization::getSupportedLocales() as $locale => $language): ?>
                     <?php $i++; ?>
                     <div class="tab-pane {{ App::getLocale() == $locale ? 'active' : '' }}" id="tab_{{ $i }}">
-                        @include('block::admin.blocks.partials.create-fields', ['lang' => $locale])
+                        @include('block::admin.blocks.partials.create-fields', ['lang' => $locale, ''])
                     </div>
                     <?php endforeach; ?>
 
@@ -38,7 +38,15 @@
                 </div>
             </div> {{-- end nav-tabs-custom --}}
         </div>
+        <div class="col-md-2">
+            <div class="box box-primary">
+                <div class="box-body">
+                    {!! Form::normalInput('name', trans('block::blocks.name'), $errors) !!}
+                </div>
+            </div>
+        </div>
     {!! Form::close() !!}
+    </div>
 @stop
 
 @section('footer')
@@ -59,16 +67,6 @@
                     { key: 'b', route: "<?= route('admin.block.block.index') ?>" }
                 ]
             });
-        });
-    </script>
-    <script type="text/javascript">
-        $(function() {
-            CKEDITOR.replaceAll(function( textarea, config ) {
-                if (!$(textarea).hasClass('ckeditor')) {
-                    return false;
-                }
-                config.language = '<?php echo App::getLocale() ?>';
-            } );
         });
     </script>
     <script>
