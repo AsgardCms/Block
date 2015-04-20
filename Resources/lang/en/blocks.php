@@ -20,6 +20,7 @@ return [
         'block deleted' => 'Block successfully deleted.',
     ],
     'validation' => [
+        'body is required' => 'The body is required',
     ],
     'online' => 'Online',
     'name' => 'Name',
