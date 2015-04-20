@@ -46,7 +46,7 @@
                             </td>
                             <td>
                                 <a href="{{ URL::route('admin.block.block.edit', [$block->id]) }}">
-                                    {{ $block->status }}
+                                    {!! $block->present()->onlineLabel !!}
                                 </a>
                             </td>
                             <td>
