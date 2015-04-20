@@ -1,5 +1,5 @@
 <div class="box-body">
-    <p>
-        Your fields //
-    </p>
+    {!! Form::i18nTextarea('body', trans('block::blocks.body'), $errors, $lang, $block) !!}
+
+    {!! Form::i18nCheckbox('online', trans('block::blocks.online'), $errors, $lang, $block) !!}
 </div>

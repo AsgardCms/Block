@@ -17,9 +17,9 @@
 @stop
 
 @section('content')
-    {!! Form::open(['route' => ['admin.block.block.update', block->id], 'method' => 'put']) !!}
+    {!! Form::open(['route' => ['admin.block.block.update', $block->id], 'method' => 'put']) !!}
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-10">
             <div class="nav-tabs-custom">
                 @include('partials.form-tab-headers')
                 <div class="tab-content">
@@ -37,6 +37,13 @@
                     </div>
                 </div>
             </div> {{-- end nav-tabs-custom --}}
+        </div>
+        <div class="col-md-2">
+            <div class="box box-primary">
+                <div class="box-body">
+                    {!! Form::normalInput('name', trans('block::blocks.name'), $errors, $block) !!}
+                </div>
+            </div>
         </div>
     {!! Form::close() !!}
 @stop
@@ -59,16 +66,6 @@
                     { key: 'b', route: "<?= route('admin.block.block.index') ?>" }
                 ]
             });
-        });
-    </script>
-    <script type="text/javascript">
-        $(function() {
-            CKEDITOR.replaceAll(function( textarea, config ) {
-                if (!$(textarea).hasClass('ckeditor')) {
-                    return false;
-                }
-                config.language = '<?php echo App::getLocale() ?>';
-            } );
         });
     </script>
     <script>
