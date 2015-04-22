@@ -45,8 +45,7 @@ class BlockRepositoryTest extends BaseBlockTest
 
         $block = $this->block->get('testblock');
 
-        $this->assertEquals('testblock', $block->name);
-        $this->assertEquals('lorem en', $block->translate('en')->body);
+        $this->assertEquals('lorem en', $block);
     }
 
     /** @test */
@@ -76,8 +75,7 @@ class BlockRepositoryTest extends BaseBlockTest
 
         $block = Block::get('testblock');
 
-        $this->assertEquals('testblock', $block->name);
-        $this->assertEquals('lorem en', $block->translate('en')->body);
+        $this->assertEquals('lorem en', $block);
     }
 
     /** @test */
