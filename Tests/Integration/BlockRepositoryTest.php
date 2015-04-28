@@ -115,6 +115,15 @@ class BlockRepositoryTest extends BaseBlockTest
         $this->assertEquals($block->name, 'test-block');
     }
 
+    /** @test */
+    public function it_updates_block_with_name_change()
+    {
+        $block = $this->block->create(['name' => 'test block']);
+        $this->block->update($block, ['name' => 'my awesome block']);
+
+        $this->assertEquals($block->name, 'my-awesome-block');
+    }
+
     /**
      * Create a block with random properties
      * @param bool $statusEn
