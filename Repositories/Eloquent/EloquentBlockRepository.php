@@ -13,7 +13,7 @@ class EloquentBlockRepository extends EloquentBaseRepository implements BlockRep
      */
     public function create($data)
     {
-        $this->normalize($data);
+        $this->sluggify($data);
 
         return $this->model->create($data);
     }
@@ -25,7 +25,9 @@ class EloquentBlockRepository extends EloquentBaseRepository implements BlockRep
      */
     public function update($model, $data)
     {
-        $this->normalize($data);
+        if ($this->needsSlugging($model, $data)) {
+            $this->sluggify($data);
+        }
 
         $model->update($data);
 
@@ -73,7 +75,7 @@ class EloquentBlockRepository extends EloquentBaseRepository implements BlockRep
      * Normalize the request data
      * @param array $data
      */
-    private function normalize(array &$data)
+    private function sluggify(array &$data)
     {
         $data['name'] = $this->makeNameUnique($data['name']);
     }
@@ -172,5 +174,16 @@ class EloquentBlockRepository extends EloquentBaseRepository implements BlockRep
         $increment = reset($list) + 1;
 
         return $increment;
+    }
+
+    /**
+     * Check if the given model needs to be slugged
+     * @param object $model
+     * @param array $data
+     * @return bool
+     */
+    private function needsSlugging($model, array $data)
+    {
+        return $model->name != array_get($data, 'name');
     }
 }
