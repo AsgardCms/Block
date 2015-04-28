@@ -14,3 +14,7 @@ script:
 
 notifications:
   slack: asgardcms:oJ1NpQQ7t2vslPIlKzZHVvZE
+
+matrix:
+  allow_failures:
+    - php: hhvm
