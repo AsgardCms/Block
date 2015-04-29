@@ -57,13 +57,12 @@ class BlockRepositoryTest extends BaseBlockTest
         $this->createRandomBlock(true, true);
 
         App::setLocale('fr');
-        $this->setExpectedException('Illuminate\Database\Eloquent\ModelNotFoundException');
-        $this->block->get('testBlock');
+        $block = $this->block->get('testBlock');
+        $this->assertEquals('', $block);
 
         App::setLocale('en');
-        $block = $this->block->get('testBlock');
-        $this->assertEquals('testBlock', $block->name);
-        $this->assertEquals('lorem en', $block->translate('en')->body);
+        $block = $this->block->get('testblock');
+        $this->assertEquals('lorem en', $block);
     }
 
     /** @test */
@@ -122,6 +121,14 @@ class BlockRepositoryTest extends BaseBlockTest
         $this->block->update($block, ['name' => 'my awesome block']);
 
         $this->assertEquals($block->name, 'my-awesome-block');
+    }
+
+    /** @test */
+    public function it_returns_empty_string_if_block_doesnt_exist()
+    {
+        $block = $this->block->get('heya');
+
+        $this->assertSame('', $block);
     }
 
     /**

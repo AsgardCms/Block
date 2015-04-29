@@ -56,10 +56,12 @@ class EloquentBlockRepository extends EloquentBaseRepository implements BlockRep
     {
         $lang = $this->getCurrentLocale();
 
-        return $this->model->whereHas('translations', function (Builder $q) use ($lang) {
+        $block = $this->model->whereHas('translations', function (Builder $q) use ($lang) {
             $q->where('locale', "$lang");
             $q->where('online', true);
-        })->with('translations')->whereName($name)->firstOrFail()->body;
+        })->with('translations')->whereName($name)->first();
+
+        return $block ? $block->body : '';
     }
 
     /**
