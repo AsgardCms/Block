@@ -120,7 +120,7 @@ class EloquentBlockRepository extends EloquentBaseRepository implements BlockRep
     {
         $query = $this->model->where('name', 'LIKE', $slug . '%');
 
-        $list = $query->lists('name', $this->model->getKeyName());
+        $list = $query->lists('name', $this->model->getKeyName())->all();
 
         return $list;
     }
