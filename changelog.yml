@@ -1,0 +1,11 @@
+url: https://github.com/AsgardCms/Block
+versions:
+    "1.0.2":
+        changed:
+            - Adding changelog file
+    "1.0.1":
+        changed:
+            - Using the tagged version of modules
+    "1.0.0":
+        changed:
+            - Initial release
