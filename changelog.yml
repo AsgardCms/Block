@@ -1,5 +1,10 @@
 url: https://github.com/AsgardCms/Block
 versions:
+    "1.0.3":
+        added:
+            - Using new sidebar extender class
+        removed:
+            - Old SidebarViewComposer
     "1.0.2":
         changed:
             - Adding changelog file

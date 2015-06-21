@@ -9,7 +9,7 @@
   ],
   "active": 1,
   "order": 1,
-  "version": "v1.0.2",
+  "version": "v1.0.3",
   "providers": [
     "Modules\\Block\\Providers\\BlockServiceProvider",
     "Modules\\Block\\Providers\\RouteServiceProvider"
