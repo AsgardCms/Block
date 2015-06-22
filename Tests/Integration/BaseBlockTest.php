@@ -1,12 +1,18 @@
 <?php namespace Modules\Block\Tests\Integration;
 
 use Maatwebsite\Sidebar\SidebarServiceProvider;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider;
+use Modules\Block\Providers\BlockServiceProvider;
+use Modules\Block\Repositories\BlockRepository;
+use Modules\Core\Providers\CoreServiceProvider;
 use Orchestra\Testbench\TestCase;
+use Pingpong\Modules\ModulesServiceProvider;
 
 abstract class BaseBlockTest extends TestCase
 {
     /**
-     * @var \Modules\Block\Repositories\BlockRepository
+     * @var BlockRepository
      */
     protected $block;
 
@@ -16,16 +22,16 @@ abstract class BaseBlockTest extends TestCase
 
         $this->resetDatabase();
 
-        $this->block = app('Modules\Block\Repositories\BlockRepository');
+        $this->block = app(BlockRepository::class);
     }
 
     protected function getPackageProviders($app)
     {
         return [
-            'Pingpong\Modules\ModulesServiceProvider',
-            'Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider',
-            'Modules\Core\Providers\CoreServiceProvider',
-            'Modules\Block\Providers\BlockServiceProvider',
+            ModulesServiceProvider::class,
+            LaravelLocalizationServiceProvider::class,
+            CoreServiceProvider::class,
+            BlockServiceProvider::class,
             SidebarServiceProvider::class,
         ];
     }
@@ -33,7 +39,7 @@ abstract class BaseBlockTest extends TestCase
     protected function getPackageAliases($app)
     {
         return [
-            'LaravelLocalization' => 'Mcamara\LaravelLocalization\Facades\LaravelLocalization',
+            'LaravelLocalization' => LaravelLocalization::class,
         ];
     }
 
