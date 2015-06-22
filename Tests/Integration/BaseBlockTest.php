@@ -1,5 +1,6 @@
 <?php namespace Modules\Block\Tests\Integration;
 
+use Maatwebsite\Sidebar\SidebarServiceProvider;
 use Orchestra\Testbench\TestCase;
 
 abstract class BaseBlockTest extends TestCase
@@ -25,6 +26,7 @@ abstract class BaseBlockTest extends TestCase
             'Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider',
             'Modules\Core\Providers\CoreServiceProvider',
             'Modules\Block\Providers\BlockServiceProvider',
+            SidebarServiceProvider::class,
         ];
     }
 
