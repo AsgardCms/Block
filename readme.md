@@ -8,11 +8,9 @@
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/AsgardCms/Block/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/AsgardCms/Block/?branch=master)
 
-
 ## Resources
 
-- [View the changelog](CHANGELOG.md)
-- [Contribute to AsgardCMS](CONTRIBUTING.md)
+- [Contribute to AsgardCMS](https://asgardcms.com/en/docs/getting-started/contributing)
 - [License](LICENSE.md)
 
 
