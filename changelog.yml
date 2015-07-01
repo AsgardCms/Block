@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Block
 versions:
+    "1.1.0":
+        changed:
+            - Use the changed <code>lists()</code> api
     "1.0.3":
         added:
             - Using new sidebar extender class
