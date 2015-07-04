@@ -1,6 +1,5 @@
 <?php namespace Modules\Block\Http\Controllers\Admin;
 
-use Laracasts\Flash\Flash;
 use Modules\Block\Entities\Block;
 use Modules\Block\Http\Requests\CreateBlockRequest;
 use Modules\Block\Http\Requests\UpdateBlockRequest;
@@ -53,7 +52,7 @@ class BlockController extends AdminBaseController
     {
         $this->block->create($request->all());
 
-        Flash::success(trans('block::blocks.messages.block created'));
+        flash(trans('block::blocks.messages.block created'));
 
         return redirect()->route('admin.block.block.index');
     }
@@ -80,7 +79,7 @@ class BlockController extends AdminBaseController
     {
         $this->block->update($block, $request->all());
 
-        Flash::success(trans('block::blocks.messages.block updated'));
+        flash(trans('block::blocks.messages.block updated'));
 
         return redirect()->route('admin.block.block.index');
     }
@@ -95,7 +94,7 @@ class BlockController extends AdminBaseController
     {
         $this->block->destroy($block);
 
-        Flash::success(trans('block::blocks.messages.block deleted'));
+        flash(trans('block::blocks.messages.block deleted'));
 
         return redirect()->route('admin.block.block.index');
     }
