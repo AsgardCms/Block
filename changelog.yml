@@ -1,5 +1,10 @@
 url: https://github.com/AsgardCms/Block
 versions:
+    "1.2.0":
+        added:
+            - Adding an update and go back button
+        changed:
+            - Use the <code>flash()</code> helper
     "1.1.0":
         changed:
             - Use the changed <code>lists()</code> api
