@@ -81,7 +81,11 @@ class BlockController extends AdminBaseController
 
         flash(trans('block::blocks.messages.block updated'));
 
-        return redirect()->route('admin.block.block.index');
+        if ($request->get('button') == 'index') {
+            return redirect()->route('admin.block.block.index');
+        }
+
+        return redirect()->back();
     }
 
     /**
