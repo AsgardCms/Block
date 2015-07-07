@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Block
 versions:
+    "1.3.0":
+        changed:
+            - Use manual route definition over the route resource shortcut
     "1.2.0":
         added:
             - Adding an update and go back button
