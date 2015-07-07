@@ -1,21 +1,14 @@
 <?php
 
-use Illuminate\Routing\Router;
+$router->bind('blocks', function ($id) {
+    return app('Modules\Block\Repositories\BlockRepository')->find($id);
+});
 
-/** @var Router $router */
-
-$router->group(['prefix' =>'/block'], function (Router $router) {
-        $router->bind('blocks', function ($id) {
-            return app('Modules\Block\Repositories\BlockRepository')->find($id);
-        });
-        $router->resource('blocks', 'BlockController', ['except' => ['show'], 'names' => [
-            'index' => 'admin.block.block.index',
-            'create' => 'admin.block.block.create',
-            'store' => 'admin.block.block.store',
-            'edit' => 'admin.block.block.edit',
-            'update' => 'admin.block.block.update',
-            'destroy' => 'admin.block.block.destroy',
-        ]]);
-// append
-
+$router->group(['prefix' =>'/block'], function () {
+    get('blocks', ['as' => 'admin.block.block.index', 'uses' => 'BlockController@index']);
+    get('blocks/create', ['as' => 'admin.block.block.create', 'uses' => 'BlockController@create']);
+    post('blocks', ['as' => 'admin.block.block.store', 'uses' => 'BlockController@store']);
+    get('blocks/{blocks}/edit', ['as' => 'admin.block.block.edit', 'uses' => 'BlockController@edit']);
+    put('blocks/{blocks}', ['as' => 'admin.block.block.update', 'uses' => 'BlockController@update']);
+    delete('blocks/{blocks}', ['as' => 'admin.block.block.destroy', 'uses' => 'BlockController@destroy']);
 });
