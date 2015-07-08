@@ -1,5 +1,9 @@
 url: https://github.com/AsgardCms/Block
 versions:
+    "1.4.0":
+        changed:
+            - Use singular parameter name.
+            - Use ::class notation.
     "1.3.0":
         changed:
             - Use manual route definition over the route resource shortcut
