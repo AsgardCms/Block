@@ -1,12 +1,21 @@
 # Block Module
 
+[![Latest Version](https://img.shields.io/github/release/asgardcms/block.svg?style=flat-square)](https://github.com/asgardcms/block/releases)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
+[![Quality Sblock](https://img.shields.io/scrutinizer/g/asgardcms/block.svg?style=flat-square)](https://scrutinizer-ci.com/g/asgardcms/block)
+[![SensioLabs Insight](https://img.shields.io/sensiolabs/i/650c6d28-e888-4bbc-a57b-cf684d3fe7bf.svg)](https://insight.sensiolabs.com/projects/650c6d28-e888-4bbc-a57b-cf684d3fe7bf)
+[![CodeClimate](https://img.shields.io/codeclimate/github/AsgardCms/Block.svg)](https://codeclimate.com/github/AsgardCms/Block)
+
+[![Total Downloads](https://img.shields.io/packagist/dd/asgardcms/block.svg?style=flat-square)](https://packagist.org/packages/asgardcms/block)
+[![Total Downloads](https://img.shields.io/packagist/dm/asgardcms/block.svg?style=flat-square)](https://packagist.org/packages/asgardcms/block)
+[![Total Downloads](https://img.shields.io/packagist/dt/asgardcms/block.svg?style=flat-square)](https://packagist.org/packages/asgardcms/block)
+[![Slack](http://slack.asgardcms.com/badge.svg)](http://slack.asgardcms.com/)
+
 
 | Branch | Travis-ci |
 | ---------------- | --------------- |
 | master  | [![Build Status](https://travis-ci.org/AsgardCms/Block.svg?branch=master)](https://travis-ci.org/AsgardCms/Block)  |
 | develop  | [![Build Status](https://travis-ci.org/AsgardCms/Block.svg?branch=develop)](https://travis-ci.org/AsgardCms/Block)   |
-
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/AsgardCms/Block/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/AsgardCms/Block/?branch=master)
 
 ## Documentation
 
