@@ -7,10 +7,12 @@ php:
   - 7
 
 before_script:
-  - travis_retry composer install --no-interaction --prefer-source --dev
+  - travis_retry composer install --no-interaction --prefer-source
 
 script:
   - phpunit
+
+  sudo: false
 
 notifications:
   slack: asgardcms:oJ1NpQQ7t2vslPIlKzZHVvZE
