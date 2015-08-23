@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Block
 versions:
+    "1.5.0":
+        added:
+            - Added de locale pt and pt-BR
     "1.4.0":
         changed:
             - Use singular parameter name.
