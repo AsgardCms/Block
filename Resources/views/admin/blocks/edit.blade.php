@@ -61,7 +61,7 @@
 @section('shortcuts')
     <dl class="dl-horizontal">
         <dt><code>b</code></dt>
-        <dd>{{ trans('core::core.back to index') }}</dd>
+        <dd>{{ trans('core::core.back to index', ['name' => 'blocks']) }}</dd>
     </dl>
 @stop
 
