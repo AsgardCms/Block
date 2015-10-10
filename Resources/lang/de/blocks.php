@@ -23,6 +23,6 @@ return [
         'body is required' => 'Der Inhalt ist erforderlich',
     ],
     'online' => 'Online',
-    'name' => 'Namen',
+    'name' => 'Name',
     'body' => 'Inhalt',
 ];
