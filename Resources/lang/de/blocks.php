@@ -3,26 +3,26 @@
 return [
     'title' => [
         'blocks' => 'Blöcke',
-        'create block' => 'Block erstellen',
-        'edit block' => 'Block bearbeiten',
+        'create block' => 'Blöcke erstellen',
+        'edit block' => 'Blöcke bearbeiten',
     ],
     'button' => [
-        'create block' => 'Block erstellen',
+        'create block' => 'Blöcke erstellen',
     ],
     'table' => [
     ],
     'form' => [
     ],
     'messages' => [
-        'block created' => 'Block erfolgreich erstellt.',
-        'block not found' => 'Block nicht gefunden.',
-        'block updated' => 'Block erfolgreich aktualisiert.',
-        'block deleted' => 'Block erfolgreich gelöscht.',
+        'block created' => 'Blöcke erfolgreich erstellt.',
+        'block not found' => 'Blöcke nicht gefunden.',
+        'block updated' => 'Blöcke erfolgreich aktualisiert.',
+        'block deleted' => 'Blöcke erfolgreich gelöscht.',
     ],
     'validation' => [
-        'body is required' => 'Der Inhalt ist erforderlich',
+        'body is required' => 'Der Körper ist erforderlich',
     ],
     'online' => 'Online',
-    'name' => 'Name',
-    'body' => 'Inhalt',
+    'name' => 'Namen',
+    'body' => 'Körper',
 ];
