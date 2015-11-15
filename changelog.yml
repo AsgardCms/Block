@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Block
 versions:
+    "1.8.0":
+        added:
+            - Russian translations
     "1.7.0":
         added:
             - Chinese (simplified) translations
