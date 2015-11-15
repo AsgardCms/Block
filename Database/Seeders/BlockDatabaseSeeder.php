@@ -5,7 +5,6 @@ use Illuminate\Database\Seeder;
 
 class BlockDatabaseSeeder extends Seeder
 {
-
     /**
      * Run the database seeds.
      *
