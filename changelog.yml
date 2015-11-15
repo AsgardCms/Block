@@ -2,7 +2,7 @@ url: https://github.com/AsgardCms/Block
 versions:
     "1.7.0":
         added:
-            - Chineese (simplified) translations
+            - Chinese (simplified) translations
     "1.6.0":
         changed:
             - Improving german translations
