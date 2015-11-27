@@ -32,7 +32,7 @@
                             <th>{{ trans('block::blocks.online') }}</th>
                             <th>{{ trans('block::blocks.name') }}</th>
                             <th>{{ trans('core::core.table.created at') }}</th>
-                            <th>{{ trans('core::core.table.actions') }}</th>
+                            <th data-sortable="false">{{ trans('core::core.table.actions') }}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -61,8 +61,8 @@
                             </td>
                             <td>
                                 <div class="btn-group">
-                                    <a href="{{ URL::route('admin.block.block.edit', [$block->id]) }}" class="btn btn-default btn-flat"><i class="glyphicon glyphicon-pencil"></i></a>
-                                    <button class="btn btn-danger btn-flat" data-toggle="modal" data-target="#confirmation-{{ $block->id }}"><i class="glyphicon glyphicon-trash"></i></button>
+                                    <a href="{{ URL::route('admin.block.block.edit', [$block->id]) }}" class="btn btn-default btn-flat"><i class="fa fa-pencil"></i></a>
+                                    <button class="btn btn-danger btn-flat" data-toggle="modal" data-target="#modal-delete-confirmation" data-action-target="{{ route('admin.block.block.destroy', [$block->id]) }}"><i class="fa fa-trash"></i></button>
                                 </div>
                             </td>
                         </tr>
@@ -85,30 +85,7 @@
             </div>
         </div>
     </div>
-    <?php if (isset($blocks)): ?>
-    <?php foreach ($blocks as $block): ?>
-    <!-- Modal -->
-    <div class="modal fade modal-danger" id="confirmation-{{ $block->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title" id="myModalLabel">{{ trans('core::core.modal.title') }}</h4>
-                </div>
-                <div class="modal-body">
-                    {{ trans('core::core.modal.confirmation-message') }}
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline btn-flat" data-dismiss="modal">{{ trans('core::core.button.cancel') }}</button>
-                    {!! Form::open(['route' => ['admin.block.block.destroy', $block->id], 'method' => 'delete', 'class' => 'pull-left']) !!}
-                    <button type="submit" class="btn btn-outline btn-flat"><i class="glyphicon glyphicon-trash"></i> {{ trans('core::core.button.delete') }}</button>
-                    {!! Form::close() !!}
-                </div>
-            </div>
-        </div>
-    </div>
-    <?php endforeach; ?>
-    <?php endif; ?>
+    @include('core::partials.delete-modal')
 @stop
 
 @section('footer')
@@ -144,14 +121,7 @@
                 "order": [[ 0, "desc" ]],
                 "language": {
                     "url": '<?php echo Module::asset("core:js/vendor/datatables/{$locale}.json") ?>'
-                },
-                "columns": [
-                    null,
-                    null,
-                    null,
-                    null,
-                    { "sortable": false }
-                ]
+                }
             });
         });
     </script>
