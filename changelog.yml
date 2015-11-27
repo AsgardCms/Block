@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Block
 versions:
+    "1.8.1":
+        changed:
+            - Manual inclusing of iCheck css file has been removed
     "1.8.0":
         added:
             - Russian translations
