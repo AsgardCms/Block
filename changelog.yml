@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Block
 versions:
+    "1.10.0":
+        changed:
+            - Removed language files, they are not in the translation module
     "1.9.0":
         changed:
             - Use the new datatables way of marking column not sortable
