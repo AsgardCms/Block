@@ -15,7 +15,6 @@
 | Branch | Travis-ci |
 | ---------------- | --------------- |
 | master  | [![Build Status](https://travis-ci.org/AsgardCms/Block.svg?branch=master)](https://travis-ci.org/AsgardCms/Block)  |
-| develop  | [![Build Status](https://travis-ci.org/AsgardCms/Block.svg?branch=develop)](https://travis-ci.org/AsgardCms/Block)   |
 
 ## Documentation
 
