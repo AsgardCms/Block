@@ -1,5 +1,9 @@
 url: https://github.com/AsgardCms/Block
 versions:
+    "1.11.0":
+        added:
+            - Added <code>BlockWasCreated</code> and <code>BlockWasUpdated</code> events
+            - Adding ability to add additional fields to the block module
     "1.10.0":
         changed:
             - Removed language files, they are now in the translation module
