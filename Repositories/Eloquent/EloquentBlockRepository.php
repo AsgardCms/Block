@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\App;
+use Modules\Block\Events\BlockWasCreated;
+use Modules\Block\Events\BlockWasUpdated;
 use Modules\Block\Repositories\BlockRepository;
 use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
 
@@ -15,7 +17,11 @@ class EloquentBlockRepository extends EloquentBaseRepository implements BlockRep
     {
         $this->sluggify($data);
 
-        return $this->model->create($data);
+        $block = $this->model->create($data);
+
+        event(new BlockWasCreated($block->id, $data));
+
+        return $block;
     }
 
     /**
@@ -30,6 +36,8 @@ class EloquentBlockRepository extends EloquentBaseRepository implements BlockRep
         }
 
         $model->update($data);
+
+        event(new BlockWasUpdated($block->id, $data));
 
         return $model;
     }
