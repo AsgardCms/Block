@@ -29,6 +29,11 @@
                         @include('block::admin.blocks.partials.edit-fields', ['lang' => $locale])
                     </div>
                     <?php endforeach; ?>
+                    <?php if (config('asgard.block.config.partials.normal.edit') !== []): ?>
+                        <?php foreach (config('asgard.block.config.partials.normal.edit') as $partial): ?>
+                            @include($partial)
+                        <?php endforeach; ?>
+                    <?php endif; ?>
 
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary btn-flat" name="button" value="index" >
