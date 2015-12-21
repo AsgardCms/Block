@@ -4,6 +4,9 @@ versions:
         added:
             - Added <code>BlockWasCreated</code> and <code>BlockWasUpdated</code> events
             - Adding ability to add additional fields to the block module
+            - Dynamic relations for the block module
+            - Ability to publish block module config alone
+            - Allow publishing of block config alone
     "1.10.0":
         changed:
             - Removed language files, they are now in the translation module
