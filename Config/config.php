@@ -18,4 +18,16 @@ return [
             'edit' => [],
         ],
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Dynamic relations
+    |--------------------------------------------------------------------------
+    | Add relations that will be dynamically added to the Block entity
+    */
+    'relations' => [
+//        'extension' => function ($self) {
+//            return $self->belongsTo(BlockExtension::class, 'id', 'block_id')->first();
+//        }
+    ],
 ];
