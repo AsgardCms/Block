@@ -24,6 +24,12 @@ class BlockServiceProvider extends ServiceProvider
         $this->registerFacade();
     }
 
+    public function boot()
+    {
+        $this->mergeConfigFrom(__DIR__ . '/../Config/config.php', 'asgard.block.config');
+        $this->publishes([__DIR__ . '/../Config/config.php' => config_path('asgard.block.config' . '.php'), ], 'config');
+    }
+
     /**
      * Get the services provided by the provider.
      * @return array
