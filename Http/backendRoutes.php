@@ -3,9 +3,8 @@
 $router->bind('block', function ($id) {
     return app(\Modules\Block\Repositories\BlockRepository::class)->find($id);
 });
-
 $router->group(['prefix' =>'/block'], function () {
-    get('blocks', ['as' => 'admin.block.block.index', 'uses' => 'BlockController@index']);
+    get('blocks', ['as' => 'admin.block.block.index', 'uses' => 'BlockController@index', 'middleware' => 'can:block.blocks.index']);
     get('blocks/create', ['as' => 'admin.block.block.create', 'uses' => 'BlockController@create']);
     post('blocks', ['as' => 'admin.block.block.store', 'uses' => 'BlockController@store']);
     get('blocks/{block}/edit', ['as' => 'admin.block.block.edit', 'uses' => 'BlockController@edit']);
