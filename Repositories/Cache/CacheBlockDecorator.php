@@ -37,7 +37,7 @@ class CacheBlockDecorator extends BaseCacheDecorator implements BlockRepository
     {
         return $this->cache
             ->tags($this->entityName, 'global')
-            ->remember("{$this->locale}.{$this->entityName}.get", $this->cacheTime,
+            ->remember("{$this->locale}.{$this->entityName}.get.{$name}", $this->cacheTime,
                 function () use ($name) {
                     return $this->repository->get($name);
                 }
