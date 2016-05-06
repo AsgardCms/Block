@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Block
 versions:
+    "1.12.0":
+        changed:
+            - Fix Cache decorator was not caching individual blocks
     "1.11.0":
         added:
             - Added <code>BlockWasCreated</code> and <code>BlockWasUpdated</code> events
