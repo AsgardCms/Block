@@ -16,6 +16,22 @@
 | ---------------- | --------------- |
 | master  | [![Build Status](https://travis-ci.org/AsgardCms/Block.svg?branch=master)](https://travis-ci.org/AsgardCms/Block)  |
 
+## Installation
+
+You can install the Block module with composer:
+
+```sh
+$ composer require asgardcms/block
+```
+
+Then run the following command to install the database tables:
+
+```sh
+$ php artisan module:migrate Block
+```
+
+In the backend GUI, go to Users > Roles > Admin. Then the permissions tab, and give the Admin role the permissions for the block module.
+
 ## Documentation
 
 This is a very simple module to create re-usable blocks of content. The blocks of content are created in the administration. You give it a name and a content.
