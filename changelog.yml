@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Block
 versions:
+    "1.13.0":
+        changed:
+            - Use <code>$router</code> variable in routes file
     "1.12.0":
         changed:
             - Fix Cache decorator was not caching individual blocks
