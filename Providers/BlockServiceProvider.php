@@ -5,9 +5,11 @@ use Illuminate\Support\ServiceProvider;
 use Modules\Block\Entities\Block;
 use Modules\Block\Repositories\Cache\CacheBlockDecorator;
 use Modules\Block\Repositories\Eloquent\EloquentBlockRepository;
+use Modules\Core\Traits\CanPublishConfiguration;
 
 class BlockServiceProvider extends ServiceProvider
 {
+    use CanPublishConfiguration;
     /**
      * Indicates if loading of the provider is deferred.
      * @var bool
@@ -26,8 +28,8 @@ class BlockServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../Config/config.php', 'asgard.block.config');
-        $this->publishes([__DIR__ . '/../Config/config.php' => config_path('asgard.block.config' . '.php'), ], 'config');
+        $this->publishConfig('block', 'permissions');
+        $this->publishConfig('block', 'config');
     }
 
     /**
