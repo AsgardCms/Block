@@ -21,7 +21,7 @@ $router->group(['prefix' => '/block'], function (Router $router) {
     $router->post('blocks', [
         'as' => 'admin.block.block.store',
         'uses' => 'BlockController@store',
-        'middleware' => 'can:block.blocks.store',
+        'middleware' => 'can:block.blocks.create',
     ]);
     $router->get('blocks/{block}/edit', [
         'as' => 'admin.block.block.edit',
@@ -31,7 +31,7 @@ $router->group(['prefix' => '/block'], function (Router $router) {
     $router->put('blocks/{block}', [
         'as' => 'admin.block.block.update',
         'uses' => 'BlockController@update',
-        'middleware' => 'can:block.blocks.update',
+        'middleware' => 'can:block.blocks.edit',
     ]);
     $router->delete('blocks/{block}', [
         'as' => 'admin.block.block.destroy',
