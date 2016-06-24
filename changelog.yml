@@ -1,5 +1,10 @@
 url: https://github.com/AsgardCms/Block
 versions:
+    "2.0@unreleased":
+        added:
+            - Laravel 5.2 compatibility
+        changed:
+            - Using new more flexible way of handle permissions via middleware
     "1.13.0":
         changed:
             - Use <code>$router</code> variable in routes file
