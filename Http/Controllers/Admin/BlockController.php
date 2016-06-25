@@ -52,9 +52,8 @@ class BlockController extends AdminBaseController
     {
         $this->block->create($request->all());
 
-        flash(trans('block::blocks.messages.block created'));
-
-        return redirect()->route('admin.block.block.index');
+        return redirect()->route('admin.block.block.index')
+            ->withSuccess(trans('block::blocks.messages.block created'));
     }
 
     /**
@@ -79,13 +78,13 @@ class BlockController extends AdminBaseController
     {
         $this->block->update($block, $request->all());
 
-        flash(trans('block::blocks.messages.block updated'));
-
-        if ($request->get('button') == 'index') {
-            return redirect()->route('admin.block.block.index');
+        if ($request->get('button') === 'index') {
+            return redirect()->route('admin.block.block.index')
+                ->withSuccess(trans('block::blocks.messages.block updated'));
         }
 
-        return redirect()->back();
+        return redirect()->back()
+            ->withSuccess(trans('block::blocks.messages.block updated'));
     }
 
     /**
@@ -98,8 +97,7 @@ class BlockController extends AdminBaseController
     {
         $this->block->destroy($block);
 
-        flash(trans('block::blocks.messages.block deleted'));
-
-        return redirect()->route('admin.block.block.index');
+        return redirect()->route('admin.block.block.index')
+            ->withSuccess(trans('block::blocks.messages.block deleted'));
     }
 }
