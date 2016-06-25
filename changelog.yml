@@ -5,6 +5,7 @@ versions:
             - Laravel 5.2 compatibility
         changed:
             - Using new more flexible way of handle permissions via middleware
+            - Avoiding usage of laracasts/flash dependency
     "1.13.0":
         changed:
             - Use <code>$router</code> variable in routes file
