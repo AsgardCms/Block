@@ -7,7 +7,7 @@ use Modules\Block\Providers\BlockServiceProvider;
 use Modules\Block\Repositories\BlockRepository;
 use Modules\Core\Providers\CoreServiceProvider;
 use Orchestra\Testbench\TestCase;
-use Pingpong\Modules\ModulesServiceProvider;
+use Nwidart\Modules\LaravelModulesServiceProvider;
 
 abstract class BaseBlockTest extends TestCase
 {
@@ -28,7 +28,7 @@ abstract class BaseBlockTest extends TestCase
     protected function getPackageProviders($app)
     {
         return [
-            ModulesServiceProvider::class,
+            LaravelModulesServiceProvider::class,
             LaravelLocalizationServiceProvider::class,
             CoreServiceProvider::class,
             BlockServiceProvider::class,
