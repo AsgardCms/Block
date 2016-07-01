@@ -5,6 +5,7 @@ namespace Modules\Block\Providers;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 use Modules\Block\Entities\Block;
+use Modules\Block\Facades\BlockFacade;
 use Modules\Block\Repositories\Cache\CacheBlockDecorator;
 use Modules\Block\Repositories\Eloquent\EloquentBlockRepository;
 use Modules\Core\Traits\CanPublishConfiguration;
@@ -62,6 +63,6 @@ class BlockServiceProvider extends ServiceProvider
     private function registerFacade()
     {
         $aliasLoader = AliasLoader::getInstance();
-        $aliasLoader->alias('Block', 'Modules\Block\Facades\BlockFacade');
+        $aliasLoader->alias('Block', BlockFacade::class);
     }
 }
