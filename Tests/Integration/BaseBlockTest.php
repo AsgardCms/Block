@@ -5,6 +5,7 @@ namespace Modules\Block\Tests\Integration;
 use Maatwebsite\Sidebar\SidebarServiceProvider;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider;
+use Modules\Block\Facades\BlockFacade;
 use Modules\Block\Providers\BlockServiceProvider;
 use Modules\Block\Repositories\BlockRepository;
 use Modules\Core\Providers\CoreServiceProvider;
@@ -42,6 +43,7 @@ abstract class BaseBlockTest extends TestCase
     {
         return [
             'LaravelLocalization' => LaravelLocalization::class,
+            'Block', BlockFacade::class
         ];
     }
 
