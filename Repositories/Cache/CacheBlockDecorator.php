@@ -1,4 +1,6 @@
-<?php namespace Modules\Block\Repositories\Cache;
+<?php
+
+namespace Modules\Block\Repositories\Cache;
 
 use Modules\Block\Repositories\BlockRepository;
 use Modules\Core\Repositories\Cache\BaseCacheDecorator;

@@ -1,4 +1,6 @@
-<?php namespace Modules\Block\Entities;
+<?php
+
+namespace Modules\Block\Entities;
 
 use Dimsav\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;

@@ -1,4 +1,6 @@
-<?php namespace Modules\Block\Tests\Integration;
+<?php
+
+namespace Modules\Block\Tests\Integration;
 
 use Maatwebsite\Sidebar\SidebarServiceProvider;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -6,8 +8,8 @@ use Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider;
 use Modules\Block\Providers\BlockServiceProvider;
 use Modules\Block\Repositories\BlockRepository;
 use Modules\Core\Providers\CoreServiceProvider;
-use Orchestra\Testbench\TestCase;
 use Nwidart\Modules\LaravelModulesServiceProvider;
+use Orchestra\Testbench\TestCase;
 
 abstract class BaseBlockTest extends TestCase
 {

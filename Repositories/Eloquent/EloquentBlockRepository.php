@@ -1,4 +1,6 @@
-<?php namespace Modules\Block\Repositories\Eloquent;
+<?php
+
+namespace Modules\Block\Repositories\Eloquent;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\App;

@@ -1,4 +1,6 @@
-<?php namespace Modules\Block\Http\Controllers\Admin;
+<?php
+
+namespace Modules\Block\Http\Controllers\Admin;
 
 use Modules\Block\Entities\Block;
 use Modules\Block\Http\Requests\CreateBlockRequest;

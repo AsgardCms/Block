@@ -1,4 +1,6 @@
-<?php namespace Modules\Block\Events;
+<?php
+
+namespace Modules\Block\Events;
 
 class BlockWasUpdated
 {

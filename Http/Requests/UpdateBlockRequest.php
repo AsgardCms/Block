@@ -1,4 +1,6 @@
-<?php namespace Modules\Block\Http\Requests;
+<?php
+
+namespace Modules\Block\Http\Requests;
 
 use Modules\Core\Internationalisation\BaseFormRequest;
 

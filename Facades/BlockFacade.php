@@ -1,4 +1,6 @@
-<?php namespace Modules\Block\Facades;
+<?php
+
+namespace Modules\Block\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

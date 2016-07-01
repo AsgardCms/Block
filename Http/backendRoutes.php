@@ -3,7 +3,6 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-
 $router->bind('block', function ($id) {
     return app(\Modules\Block\Repositories\BlockRepository::class)->find($id);
 });

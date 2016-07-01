@@ -1,4 +1,6 @@
-<?php namespace Modules\Block\Tests\Integration;
+<?php
+
+namespace Modules\Block\Tests\Integration;
 
 use Faker\Factory;
 use Illuminate\Support\Facades\App;
