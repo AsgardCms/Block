@@ -2,9 +2,9 @@
 
 return [
     'block.blocks' => [
-        'index' => trans('block::blocks.list resource'),
-        'create' => trans('block::blocks.create resource'),
-        'edit' => trans('block::blocks.edit resource'),
-        'destroy' => trans('block::blocks.destroy resource'),
+        'index' => 'block::blocks.list resource',
+        'create' => 'block::blocks.create resource',
+        'edit' => 'block::blocks.edit resource',
+        'destroy' => 'block::blocks.destroy resource',
     ],
 ];
