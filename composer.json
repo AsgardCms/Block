@@ -1,5 +1,5 @@
 {
-  "name": "asgardcms/block",
+  "name": "asgardcms/block-module",
   "description": "A module to create small blocks of content to display anywhere on the site.",
   "type": "asgard-module",
   "license": "MIT",
