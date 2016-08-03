@@ -1,4 +1,6 @@
-<?php namespace Modules\Block\Tests\Integration;
+<?php
+
+namespace Modules\Block\Tests\Integration;
 
 use Illuminate\Database\Eloquent\Collection;
 
@@ -24,7 +26,7 @@ class BlockFacadeTest extends BaseBlockTest
             'fr' => [
                 'body' => 'lorem fr',
                 'online' => true,
-            ]
+            ],
         ]);
 
         $this->assertEquals('lorem en', \Block::get('test-block'));

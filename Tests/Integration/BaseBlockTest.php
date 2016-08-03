@@ -43,7 +43,7 @@ abstract class BaseBlockTest extends TestCase
     {
         return [
             'LaravelLocalization' => LaravelLocalization::class,
-            'Block', BlockFacade::class
+            'Block', BlockFacade::class,
         ];
     }
 
