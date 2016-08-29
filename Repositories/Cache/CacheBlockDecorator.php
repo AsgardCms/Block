@@ -22,7 +22,7 @@ class CacheBlockDecorator extends BaseCacheDecorator implements BlockRepository
     public function allOnlineInLang($lang)
     {
         return $this->cache
-            ->tags($this->entityName, 'global')
+            ->tags([$this->entityName, 'global'])
             ->remember("{$this->locale}.{$this->entityName}.allOnlineInLang", $this->cacheTime,
                 function () use ($lang) {
                     return $this->repository->allOnlineInLang($lang);
@@ -38,7 +38,7 @@ class CacheBlockDecorator extends BaseCacheDecorator implements BlockRepository
     public function get($name)
     {
         return $this->cache
-            ->tags($this->entityName, 'global')
+            ->tags([$this->entityName, 'global'])
             ->remember("{$this->locale}.{$this->entityName}.get.{$name}", $this->cacheTime,
                 function () use ($name) {
                     return $this->repository->get($name);
