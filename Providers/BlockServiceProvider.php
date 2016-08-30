@@ -33,6 +33,7 @@ class BlockServiceProvider extends ServiceProvider
     {
         $this->publishConfig('block', 'permissions');
         $this->publishConfig('block', 'config');
+        $this->loadMigrationsFrom(__DIR__.'/../Database/Migrations');
     }
 
     /**
