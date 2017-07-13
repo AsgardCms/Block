@@ -20,6 +20,11 @@ script:
 
 sudo: false
 
+branches:
+  only:
+    - 2.0
+    - master
+
 notifications:
   slack: asgardcms:oJ1NpQQ7t2vslPIlKzZHVvZE
   email:
