@@ -6,6 +6,7 @@ use Faker\Factory;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Event;
 use Modules\Block\Events\BlockIsCreating;
+use Modules\Block\Events\BlockIsUpdating;
 use Modules\Block\Events\BlockWasCreated;
 use Modules\Block\Events\BlockWasUpdated;
 use Modules\Block\Facades\BlockFacade as Block;
@@ -190,6 +191,38 @@ class EloquentBlockRepositoryTest extends BaseBlockTest
         Event::assertDispatched(BlockWasUpdated::class, function ($e) use ($block) {
             return $e->block->name === $block->name;
         });
+    }
+
+    /** @test */
+    public function it_triggers_event_when_block_is_updating()
+    {
+        Event::fake();
+
+        $block = $this->createRandomBlock();
+        $block = $this->block->update($block, ['name' => 'something else']);
+
+        Event::assertDispatched(BlockIsUpdating::class, function ($e) use ($block) {
+            return $e->getAttribute('name') === $block->name;
+        });
+    }
+
+    /** @test */
+    public function it_can_change_data_when_it_is_updating_event()
+    {
+        Event::listen(BlockIsUpdating::class, function (BlockIsUpdating $event) {
+            $event->setAttributes(['name' => 'awesome block']);
+            $event->setAttributes([
+                'en' => ['body' => 'no more lorem! en'],
+                'fr' => ['body' => 'no more lorem! fr'],
+            ]);
+        });
+
+        $block = $this->createRandomBlock();
+        $block = $this->block->update($block, ['name' => 'something else']);
+
+        $this->assertEquals('awesome block', $block->name);
+        $this->assertEquals('no more lorem! en', $block->translate('en')->body);
+        $this->assertEquals('no more lorem! fr', $block->translate('fr')->body);
     }
 
     /**
