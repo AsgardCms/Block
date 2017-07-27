@@ -40,6 +40,23 @@ After this, you'll be able to get the content of a block with the following code
 {!! Block::get('block-name') !!}
 ```
 
+
+### Hooks
+
+Hooks are special events, where it allows you to change the data stored before it's stored in the database.
+
+#### `BlockIsCreating`
+
+Triggered before a block is created.
+
+#### `BlockIsUpdating`
+
+Triggered before a block is updated.
+
+#### `BlockContentIsRendering`
+
+Triggered when a block body gets displayed.
+
 ## Resources
 
 - [Contribute to AsgardCMS](https://asgardcms.com/en/docs/getting-started/contributing)
