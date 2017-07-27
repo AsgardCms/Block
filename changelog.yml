@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Block
 versions:
-    "2.1.0@unreleased":
+    "2.1.0":
         added:
             - Creating new hook when a block is creating
             - Creating new hook when a block is updating
