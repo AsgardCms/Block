@@ -16,6 +16,15 @@
 
 ## Installation
 
+### Download
+
+You can install the Block module, with the following command which allows the module to be edited for your project.
+
+``` sh
+php artisan asgard:download:module asgardcms/blog --migrations
+```
+
+### Composer
 You can install the Block module with composer:
 
 ```sh
@@ -27,6 +36,8 @@ Then run the following command to install the database tables:
 ```sh
 $ php artisan module:migrate Block
 ```
+
+### Permissions
 
 In the backend GUI, go to Users > Roles > Admin. Then the permissions tab, and give the Admin role the permissions for the block module.
 
