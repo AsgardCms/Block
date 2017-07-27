@@ -4,6 +4,8 @@ namespace Modules\Block\Tests\Integration;
 
 use Faker\Factory;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Event;
+use Modules\Block\Events\BlockWasCreated;
 use Modules\Block\Facades\BlockFacade as Block;
 
 class EloquentBlockRepositoryTest extends BaseBlockTest
@@ -131,6 +133,18 @@ class EloquentBlockRepositoryTest extends BaseBlockTest
         $block = $this->block->get('heya');
 
         $this->assertSame('', $block);
+    }
+
+    /** @test */
+    public function it_triggers_event_when_block_was_created()
+    {
+        Event::fake();
+
+        $block = $this->createRandomBlock();
+
+        Event::assertDispatched(BlockWasCreated::class, function ($e) use ($block) {
+            return $e->block->name === $block->name;
+        });
     }
 
     /**

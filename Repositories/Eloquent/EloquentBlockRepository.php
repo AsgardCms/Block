@@ -21,7 +21,7 @@ class EloquentBlockRepository extends EloquentBaseRepository implements BlockRep
 
         $block = $this->model->create($data);
 
-        event(new BlockWasCreated($block->id, $data));
+        event(new BlockWasCreated($block, $data));
 
         return $block;
     }
