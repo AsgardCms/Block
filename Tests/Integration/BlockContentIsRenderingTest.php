@@ -18,4 +18,12 @@ class BlockContentIsRenderingTest extends BaseBlockTest
 
         $this->assertEquals('<strong>My Block Body</strong>', $block->body);
     }
+
+    /** @test */
+    public function it_doesnt_alter_content_if_no_listeners()
+    {
+        $block = $this->block->create(['name' => 'testBlock', 'en' => ['body' => 'My Block Body'], 'fr' => ['body' => 'lorem fr']]);
+
+        $this->assertEquals('My Block Body', $block->body);
+    }
 }
