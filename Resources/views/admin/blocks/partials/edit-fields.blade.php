@@ -1,5 +1,6 @@
 <div class="box-body">
-    {!! Form::i18nTextarea('body', trans('block::blocks.body'), $errors, $lang, $block) !!}
+    <?php $old = $block->hasTranslation($lang) ? $block->translate($lang)->body : '' ?>
+    @editor('body', trans('page::pages.form.body'), old("$lang.body", $old), $lang)
 
     {!! Form::i18nCheckbox('online', trans('block::blocks.online'), $errors, $lang, $block) !!}
 
