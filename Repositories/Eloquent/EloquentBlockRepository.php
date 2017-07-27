@@ -4,6 +4,7 @@ namespace Modules\Block\Repositories\Eloquent;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\App;
+use Modules\Block\Events\BlockIsCreating;
 use Modules\Block\Events\BlockWasCreated;
 use Modules\Block\Events\BlockWasUpdated;
 use Modules\Block\Repositories\BlockRepository;
@@ -19,7 +20,9 @@ class EloquentBlockRepository extends EloquentBaseRepository implements BlockRep
     {
         $this->sluggify($data);
 
-        $block = $this->model->create($data);
+        event($event = new BlockIsCreating($data));
+
+        $block = $this->model->create($event->getAttributes());
 
         event(new BlockWasCreated($block, $data));
 
