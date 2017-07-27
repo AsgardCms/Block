@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Event;
 use Modules\Block\Events\BlockIsCreating;
 use Modules\Block\Events\BlockWasCreated;
+use Modules\Block\Events\BlockWasUpdated;
 use Modules\Block\Facades\BlockFacade as Block;
 
 class EloquentBlockRepositoryTest extends BaseBlockTest
@@ -176,6 +177,19 @@ class EloquentBlockRepositoryTest extends BaseBlockTest
         $this->assertEquals('awesome block', $block->name);
         $this->assertEquals('no more lorem! en', $block->translate('en')->body);
         $this->assertEquals('no more lorem! fr', $block->translate('fr')->body);
+    }
+
+    /** @test */
+    public function it_triggers_event_when_block_was_updated()
+    {
+        Event::fake();
+
+        $block = $this->createRandomBlock();
+        $block = $this->block->update($block, ['name' => 'something else']);
+
+        Event::assertDispatched(BlockWasUpdated::class, function ($e) use ($block) {
+            return $e->block->name === $block->name;
+        });
     }
 
     /**
