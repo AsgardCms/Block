@@ -6,7 +6,7 @@ use Faker\Factory;
 use Illuminate\Support\Facades\App;
 use Modules\Block\Facades\BlockFacade as Block;
 
-class BlockRepositoryTest extends BaseBlockTest
+class EloquentBlockRepositoryTest extends BaseBlockTest
 {
     /** @test */
     public function it_creates_blocks()
