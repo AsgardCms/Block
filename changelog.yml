@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Block
 versions:
-    "2.1.1@unreleased":
+    "2.1.2":
         added:
             - Moving translations from Translation module back to Block
     "2.1.0":
