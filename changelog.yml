@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Block
 versions:
+    "2.2.0":
+        changed:
+            - Register the blog sidebar via event handler
     "2.1.2":
         added:
             - Moving translations from Translation module back to Block

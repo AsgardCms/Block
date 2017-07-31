@@ -5,14 +5,17 @@ namespace Modules\Block\Providers;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 use Modules\Block\Entities\Block;
+use Modules\Block\Events\Handlers\RegisterBlockSidebar;
 use Modules\Block\Facades\BlockFacade;
 use Modules\Block\Repositories\Cache\CacheBlockDecorator;
 use Modules\Block\Repositories\Eloquent\EloquentBlockRepository;
+use Modules\Core\Events\BuildingSidebar;
+use Modules\Core\Traits\CanGetSidebarClassForModule;
 use Modules\Core\Traits\CanPublishConfiguration;
 
 class BlockServiceProvider extends ServiceProvider
 {
-    use CanPublishConfiguration;
+    use CanPublishConfiguration, CanGetSidebarClassForModule;
     /**
      * Indicates if loading of the provider is deferred.
      * @var bool
@@ -27,6 +30,11 @@ class BlockServiceProvider extends ServiceProvider
     {
         $this->registerBindings();
         $this->registerFacade();
+
+        $this->app['events']->listen(
+            BuildingSidebar::class,
+            $this->getSidebarClassForModule('block', RegisterBlockSidebar::class)
+        );
     }
 
     public function boot()
