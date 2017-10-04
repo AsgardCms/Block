@@ -5,7 +5,7 @@
         {{ trans('block::blocks.title.blocks') }}
     </h1>
     <ol class="breadcrumb">
-        <li><a href="{{ URL::route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('core::core.breadcrumb.home') }}</a></li>
+        <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('core::core.breadcrumb.home') }}</a></li>
         <li class="active">{{ trans('block::blocks.title.blocks') }}</li>
     </ol>
 @stop
@@ -15,7 +15,7 @@
         <div class="col-xs-12">
             <div class="row">
                 <div class="btn-group pull-right" style="margin: 0 15px 15px 0;">
-                    <a href="{{ URL::route('admin.block.block.create') }}" class="btn btn-primary btn-flat" style="padding: 4px 10px;">
+                    <a href="{{ route('admin.block.block.create') }}" class="btn btn-primary btn-flat" style="padding: 4px 10px;">
                         <i class="fa fa-pencil"></i> {{ trans('block::blocks.button.create block') }}
                     </a>
                 </div>
@@ -40,28 +40,28 @@
                         <?php foreach ($blocks as $block): ?>
                         <tr>
                             <td>
-                                <a href="{{ URL::route('admin.block.block.edit', [$block->id]) }}">
+                                <a href="{{ route('admin.block.block.edit', [$block->id]) }}">
                                     {{ $block->id }}
                                 </a>
                             </td>
                             <td>
-                                <a href="{{ URL::route('admin.block.block.edit', [$block->id]) }}">
+                                <a href="{{ route('admin.block.block.edit', [$block->id]) }}">
                                     {!! $block->present()->onlineLabel !!}
                                 </a>
                             </td>
                             <td>
-                                <a href="{{ URL::route('admin.block.block.edit', [$block->id]) }}">
+                                <a href="{{ route('admin.block.block.edit', [$block->id]) }}">
                                     {{ $block->name }}
                                 </a>
                             </td>
                             <td>
-                                <a href="{{ URL::route('admin.block.block.edit', [$block->id]) }}">
+                                <a href="{{ route('admin.block.block.edit', [$block->id]) }}">
                                     {{ $block->created_at }}
                                 </a>
                             </td>
                             <td>
                                 <div class="btn-group">
-                                    <a href="{{ URL::route('admin.block.block.edit', [$block->id]) }}" class="btn btn-default btn-flat"><i class="fa fa-pencil"></i></a>
+                                    <a href="{{ route('admin.block.block.edit', [$block->id]) }}" class="btn btn-default btn-flat"><i class="fa fa-pencil"></i></a>
                                     <button class="btn btn-danger btn-flat" data-toggle="modal" data-target="#modal-delete-confirmation" data-action-target="{{ route('admin.block.block.destroy', [$block->id]) }}"><i class="fa fa-trash"></i></button>
                                 </div>
                             </td>

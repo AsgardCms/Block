@@ -5,8 +5,8 @@
         {{ trans('block::blocks.title.edit block') }}
     </h1>
     <ol class="breadcrumb">
-        <li><a href="{{ URL::route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('core::core.breadcrumb.home') }}</a></li>
-        <li><a href="{{ URL::route('admin.block.block.index') }}">{{ trans('block::blocks.title.blocks') }}</a></li>
+        <li><a href="{{ route('dashboard.index') }}"><i class="fa fa-dashboard"></i> {{ trans('core::core.breadcrumb.home') }}</a></li>
+        <li><a href="{{ route('admin.block.block.index') }}">{{ trans('block::blocks.title.blocks') }}</a></li>
         <li class="active">{{ trans('block::blocks.title.edit block') }}</li>
     </ol>
 @stop
@@ -44,7 +44,7 @@
                             {{ trans('core::core.button.update') }}
                         </button>
                         <button class="btn btn-default btn-flat" name="button" type="reset">{{ trans('core::core.button.reset') }}</button>
-                        <a class="btn btn-danger pull-right btn-flat" href="{{ URL::route('admin.block.block.index')}}"><i class="fa fa-times"></i> {{ trans('core::core.button.cancel') }}</a>
+                        <a class="btn btn-danger pull-right btn-flat" href="{{ route('admin.block.block.index')}}"><i class="fa fa-times"></i> {{ trans('core::core.button.cancel') }}</a>
                     </div>
                 </div>
             </div> {{-- end nav-tabs-custom --}}

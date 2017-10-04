@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Block
 versions:
+    "3.0.0@unreleased":
+        changed:
+            - Removed usages of <code>URL::route()</code> in favor of <code>route()</code>
     "2.2.0":
         changed:
             - Register the blog sidebar via event handler
