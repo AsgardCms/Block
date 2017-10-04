@@ -22,7 +22,7 @@ class RegisterBlockSidebar extends AbstractAdminSidebar
                     $this->auth->hasAccess('block.blocks.index')
                 );
                 $item->icon('fa fa-cube');
-                $item->weight(0);
+                $item->weight(config('asgard.block.config.sidebar-position', 15));
                 $item->append('admin.block.block.create');
                 $item->route('admin.block.block.index');
                 $item->authorize(

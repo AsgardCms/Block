@@ -1,6 +1,8 @@
 url: https://github.com/AsgardCms/Block
 versions:
     "3.0.0@unreleased":
+        added:
+            - Read the sidebar position from configuration file, default to 15
         changed:
             - Removed usages of <code>URL::route()</code> in favor of <code>route()</code>
     "2.2.0":
