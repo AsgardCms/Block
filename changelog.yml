@@ -1,6 +1,6 @@
 url: https://github.com/AsgardCms/Block
 versions:
-    "3.0.0@unreleased":
+    "3.0.0":
         added:
             - AsgardCMS v3 support
             - Read the sidebar position from configuration file, default to 15
