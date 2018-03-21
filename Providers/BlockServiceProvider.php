@@ -4,6 +4,7 @@ namespace Modules\Block\Providers;
 
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
+use Modules\Core\Events\LoadingBackendTranslations;
 use Modules\Block\Entities\Block;
 use Modules\Block\Events\Handlers\RegisterBlockSidebar;
 use Modules\Block\Facades\BlockFacade;
@@ -35,6 +36,10 @@ class BlockServiceProvider extends ServiceProvider
             BuildingSidebar::class,
             $this->getSidebarClassForModule('block', RegisterBlockSidebar::class)
         );
+
+        $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
+            $event->load('blocks', array_dot(trans('block::blocks')));
+        });
     }
 
     public function boot()
