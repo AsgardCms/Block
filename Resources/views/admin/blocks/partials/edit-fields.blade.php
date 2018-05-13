@@ -1,6 +1,6 @@
 <div class="box-body">
     <?php $old = $block->hasTranslation($lang) ? $block->translate($lang)->body : '' ?>
-    @editor('body', trans('page::pages.form.body'), old("$lang.body", $old), $lang)
+    @editor('body', trans('block::blocks.body'), old("$lang.body", $old), $lang)
 
     {!! Form::i18nCheckbox('online', trans('block::blocks.online'), $errors, $lang, $block) !!}
 
