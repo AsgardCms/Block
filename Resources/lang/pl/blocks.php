@@ -14,17 +14,17 @@ return [
     'form' => [
     ],
     'messages' => [
-        'block created' => 'Blok pomyślnie utworzony.',
-        'block not found' => 'Blok nie znaleziony.',
-        'block updated' => 'Blok pomyślnie zaktualizowany.',
-        'block deleted' => 'Blok pomyślnie  usunięty.',
+        'block created' => 'Pomyślnie utworzono blok.',
+        'block not found' => 'Nie znaleziono bloku.',
+        'block updated' => 'Pomyślnie zaktualizowano blok.',
+        'block deleted' => 'Pomyślnie usunięto blok.',
     ],
     'validation' => [
-        'body is required' => 'Zawartość bloku nie może być pusta',
+        'body is required' => 'Treść jest wymagana.',
     ],
     'online' => 'Online',
     'name' => 'Nazwa',
-    'body' => 'Zawartość',
+    'body' => 'Treść',
     'list resource' => 'Wyświetlanie',
     'create resource' => 'Tworzenie',
     'edit resource' => 'Edycja',
