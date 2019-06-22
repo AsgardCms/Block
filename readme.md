@@ -21,7 +21,7 @@
 You can install the Block module, with the following command which allows the module to be edited for your project.
 
 ``` sh
-php artisan asgard:download:module asgardcms/blog --migrations
+php artisan asgard:download:module asgardcms/block --migrations
 ```
 
 ### Composer
