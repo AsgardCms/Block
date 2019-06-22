@@ -46,4 +46,14 @@ return [
     | No custom sidebar: null
     */
     'custom-sidebar' => null,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Use WYSIWYG editor
+    |--------------------------------------------------------------------------
+    | You can disable WYSIWYG editor if you prefer to edit HTML directly
+    | It is useful for example if you want to make a block with piece of Javascript
+    | (Google Maps), that would get stripped out by WYSIWYG filter
+     */
+    'use-wysiwyg' => true,
 ];
