@@ -6,7 +6,6 @@
         {!! Form::i18nTextarea('body', trans('block::blocks.body'), $errors, $lang, $block, ['class' => 'form-control']) !!}
     @endif
 
-
     {!! Form::i18nCheckbox('online', trans('block::blocks.online'), $errors, $lang, $block) !!}
 
     <?php if (config('asgard.block.config.partials.translatable.edit') !== []): ?>
