@@ -24,6 +24,7 @@ return [
     ],
     'online' => 'Online',
     'name' => 'Name',
+    'shortcode' => 'Shortcode',
     'body' => 'Body',
     'list resource' => 'List blocks',
     'create resource' => 'Create blocks',
