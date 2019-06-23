@@ -20,7 +20,7 @@ class RenderBlock
         /** @var Response $response */
         $response = $next($request);
 
-        // do not render galleries on backend
+        // do not replace shortcodes and render blocks on backend
         if (app('asgard.onBackend') === true) {
             return $response;
         }

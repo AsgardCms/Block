@@ -33,9 +33,9 @@ class CacheBlockDecorator extends BaseCacheDecorator implements BlockRepository
     }
 
     /**
-     * Get a block by its name if it's online
+     * Get a block body by its name if it's online
      * @param string $name
-     * @return object
+     * @return string
      */
     public function get($name)
     {
