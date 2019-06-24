@@ -51,6 +51,51 @@ After this, you'll be able to get the content of a block with the following code
 {!! Block::get('block-name') !!}
 ```
 
+Each block also receives a shortcode that can be used instead of the code mentioned above. Shortcode looks like this `[[BLOCK(block-name)]]`.  
+This is very useful if you for example want to allow users to reuse and enter blocks into content of the WYSIWYG editor (page or blog article body)
+
+If you want to use shortcodes in your app, you need to register `RenderBlock` middleware responsible for parsing the response and replacing the shortcodes
+with the actual block content. It can be done globally by editing `app/Http/Kernel.php` file and adding `\Modules\Block\Http\Middleware\RenderBlock::class`
+into the `$middlewareGroups` `web` group (this way, block shortcodes will be automatically replaced in all `web` routes on frontend):
+```php
+ 
+<?php
+    // app/Http/Kernel.php
+    ...
+    protected $middlewareGroups = [
+        'web' => [
+            ...
+            \Modules\Block\Http\Middleware\RenderBlock::class,
+        ]
+    ...
+}
+```
+
+There are some drawbacks to this approach, specifically that each response will be parsed and searched for the shortcodes before returning
+back to the user, which may slightly slow down your application. If you know that you do not need to use shortcodes in the whole app,
+middleware can be applied selectively only to some routes or route groups in your application:
+
+```php
+<?php
+    // Modules/YourModule/Http/frontendRoutes.php
+    ...
+    // middleware will be applied to this specific route
+    $router->get('your-url', 'YourController@method')
+        ->middleware(\Modules\Block\Http\Middleware\RenderBlock::class);
+    ...
+    // middleware will be applied to whole group
+    $router->group(['middleware' => \Modules\Block\Http\Middleware\RenderBlock::class], function(Router $router) {
+        $router->get('your-url', 'YourController@method');
+        ...
+    });
+    ...
+?>
+
+```
+
+Keep in mind that by allowing users to put blocks/shortcodes anywhere, you are creating a potential security issue, so
+use this functionality carefully.  
+
 
 ### Hooks
 

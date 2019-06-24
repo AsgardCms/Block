@@ -6,6 +6,13 @@ use Dimsav\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 use Laracasts\Presenter\PresentableTrait;
 
+/**
+ * Class Block
+ * @property string $name
+ * @property bool $online
+ * @property string $body
+ * @property string $shortcode
+ */
 class Block extends Model
 {
     use Translatable, PresentableTrait;
@@ -32,5 +39,10 @@ class Block extends Model
 
         #i: No relation found, return the call to parent (Eloquent) to handle it.
         return parent::__call($method, $parameters);
+    }
+
+    public function getShortcodeAttribute()
+    {
+        return sprintf('[[BLOCK(%s)]]', $this->name);
     }
 }

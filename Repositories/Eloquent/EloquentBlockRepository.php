@@ -64,9 +64,9 @@ class EloquentBlockRepository extends EloquentBaseRepository implements BlockRep
     }
 
     /**
-     * Get a block by its name if it's online
+     * Get a block body by its name if it's online
      * @param string $name
-     * @return object
+     * @return string
      */
     public function get($name)
     {

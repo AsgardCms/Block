@@ -31,6 +31,7 @@
                             <th>Id</th>
                             <th>{{ trans('block::blocks.online') }}</th>
                             <th>{{ trans('block::blocks.name') }}</th>
+                            <th>{{ trans('block::blocks.shortcode') }}</th>
                             <th>{{ trans('core::core.table.created at') }}</th>
                             <th data-sortable="false">{{ trans('core::core.table.actions') }}</th>
                         </tr>
@@ -55,6 +56,9 @@
                                 </a>
                             </td>
                             <td>
+                                <pre>{{ $block->shortcode }}</pre>
+                            </td>
+                            <td>
                                 <a href="{{ route('admin.block.block.edit', [$block->id]) }}">
                                     {{ $block->created_at }}
                                 </a>
@@ -74,6 +78,7 @@
                             <th>Id</th>
                             <th>{{ trans('block::blocks.online') }}</th>
                             <th>{{ trans('block::blocks.name') }}</th>
+                            <th>{{ trans('block::blocks.shortcode') }}</th>
                             <th>{{ trans('core::core.table.created at') }}</th>
                             <th>{{ trans('core::core.table.actions') }}</th>
                         </tr>
