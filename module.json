@@ -1,20 +1,20 @@
 {
-  "name": "Block",
-  "alias": "block",
-  "description": "A module to create small blocks of content to display anywhere on the site.",
-  "keywords": [
-    "asgardcms",
-    "laravel",
-    "cms"
-  ],
-  "active": 1,
-  "order": 1,
-  "version": "4.0.0",
-  "providers": [
-    "Modules\\Block\\Providers\\BlockServiceProvider",
-    "Modules\\Block\\Providers\\RouteServiceProvider"
-  ],
-  "aliases": {},
-  "files": [
-  ]
+    "name": "Block",
+    "alias": "block",
+    "description": "A module to create small blocks of content to display anywhere on the site.",
+    "keywords": [
+        "asgardcms",
+        "laravel",
+        "cms"
+    ],
+    "version": "4.0.0",
+    "active": 1,
+    "order": 1,
+    "providers": [
+        "Modules\\Block\\Providers\\BlockServiceProvider",
+        "Modules\\Block\\Providers\\RouteServiceProvider"
+    ],
+    "aliases": { },
+    "files": [
+    ]
 }

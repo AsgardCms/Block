@@ -22,18 +22,16 @@
             <div class="nav-tabs-custom">
                 @include('partials.form-tab-headers', ['fields' => ['slug', 'body']])
                 <div class="tab-content">
-                    <?php $i = 0; ?>
-                    <?php foreach (LaravelLocalization::getSupportedLocales() as $locale => $language): ?>
-                    <?php $i++; ?>
-                    <div class="tab-pane {{ App::getLocale() == $locale ? 'active' : '' }}" id="tab_{{ $i }}">
-                        @include('block::admin.blocks.partials.create-fields', ['lang' => $locale, ''])
-                    </div>
-                    <?php endforeach; ?>
-                    <?php if (config('asgard.block.config.partials.normal.create') !== []): ?>
-                        <?php foreach (config('asgard.block.config.partials.normal.create') as $partial): ?>
+                    @foreach(LaravelLocalization::getSupportedLocales() as $locale => $language)
+                        <div class="tab-pane {{ App::getLocale() == $locale ? 'active' : '' }}" id="tab_{{ $loop->index }}">
+                            @include('block::admin.blocks.partials.create-fields', ['lang' => $locale, ''])
+                        </div>
+                    @endforeach
+                    @if(config('asgard.block.config.partials.normal.create') !== [])
+                        @foreach(config('asgard.block.config.partials.normal.create') as $partial)
                             @include($partial)
-                        <?php endforeach; ?>
-                    <?php endif; ?>
+                        @endforeach
+                    @endif
 
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary btn-flat">{{ trans('core::core.button.create') }}</button>
@@ -50,7 +48,7 @@
                 </div>
             </div>
         </div>
-    {!! Form::close() !!}
+        {!! Form::close() !!}
     </div>
 @stop
 
@@ -66,7 +64,7 @@
 
 @section('scripts')
     <script type="text/javascript">
-        $( document ).ready(function() {
+        $(document).ready(function () {
             $(document).keypressAction({
                 actions: [
                     { key: 'b', route: "<?= route('admin.block.block.index') ?>" }
@@ -75,17 +73,17 @@
         });
     </script>
     <script>
-        $( document ).ready(function() {
+        $(document).ready(function () {
             $('input[type="checkbox"].flat-blue, input[type="radio"].flat-blue').iCheck({
                 checkboxClass: 'icheckbox_flat-blue',
                 radioClass: 'iradio_flat-blue'
             });
 
-            $('input[type="checkbox"]').on('ifChecked', function(){
+            $('input[type="checkbox"]').on('ifChecked', function () {
                 $(this).parent().find('input[type=hidden]').remove();
             });
 
-            $('input[type="checkbox"]').on('ifUnchecked', function(){
+            $('input[type="checkbox"]').on('ifUnchecked', function () {
                 var name = $(this).attr('name'),
                     input = '<input type="hidden" name="' + name + '" value="0" />';
                 $(this).parent().append(input);

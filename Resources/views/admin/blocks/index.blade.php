@@ -27,61 +27,62 @@
                 <div class="box-body">
                     <table class="data-table table table-bordered table-hover">
                         <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>{{ trans('block::blocks.online') }}</th>
-                            <th>{{ trans('block::blocks.name') }}</th>
-                            <th>{{ trans('block::blocks.shortcode') }}</th>
-                            <th>{{ trans('core::core.table.created at') }}</th>
-                            <th data-sortable="false">{{ trans('core::core.table.actions') }}</th>
-                        </tr>
+                            <tr>
+                                <th>Id</th>
+                                <th>{{ trans('block::blocks.online') }}</th>
+                                <th>{{ trans('block::blocks.name') }}</th>
+                                <th>{{ trans('block::blocks.shortcode') }}</th>
+                                <th>{{ trans('core::core.table.created at') }}</th>
+                                <th data-sortable="false">{{ trans('core::core.table.actions') }}</th>
+                            </tr>
                         </thead>
                         <tbody>
-                        <?php if (isset($blocks)): ?>
-                        <?php foreach ($blocks as $block): ?>
-                        <tr>
-                            <td>
-                                <a href="{{ route('admin.block.block.edit', [$block->id]) }}">
-                                    {{ $block->id }}
-                                </a>
-                            </td>
-                            <td>
-                                <a href="{{ route('admin.block.block.edit', [$block->id]) }}">
-                                    {!! $block->present()->onlineLabel !!}
-                                </a>
-                            </td>
-                            <td>
-                                <a href="{{ route('admin.block.block.edit', [$block->id]) }}">
-                                    {{ $block->name }}
-                                </a>
-                            </td>
-                            <td>
-                                <pre>{{ $block->shortcode }}</pre>
-                            </td>
-                            <td>
-                                <a href="{{ route('admin.block.block.edit', [$block->id]) }}">
-                                    {{ $block->created_at }}
-                                </a>
-                            </td>
-                            <td>
-                                <div class="btn-group">
-                                    <a href="{{ route('admin.block.block.edit', [$block->id]) }}" class="btn btn-default btn-flat"><i class="fa fa-pencil"></i></a>
-                                    <button class="btn btn-danger btn-flat" data-toggle="modal" data-target="#modal-delete-confirmation" data-action-target="{{ route('admin.block.block.destroy', [$block->id]) }}"><i class="fa fa-trash"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                        <?php endforeach; ?>
-                        <?php endif; ?>
+                            <?php if (isset($blocks)): ?>
+                            <?php foreach ($blocks as $block): ?>
+                            <tr>
+                                <td>
+                                    <a href="{{ route('admin.block.block.edit', [$block->id]) }}">
+                                        {{ $block->id }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.block.block.edit', [$block->id]) }}">
+                                        {!! $block->present()->onlineLabel !!}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.block.block.edit', [$block->id]) }}">
+                                        {{ $block->name }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <pre>{{ $block->shortcode }}</pre>
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.block.block.edit', [$block->id]) }}">
+                                        {{ $block->created_at }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a href="{{ route('admin.block.block.edit', [$block->id]) }}" class="btn btn-default btn-flat"><i class="fa fa-pencil"></i></a>
+                                        <button class="btn btn-danger btn-flat" data-toggle="modal" data-target="#modal-delete-confirmation" data-action-target="{{ route('admin.block.block.destroy', [$block->id]) }}">
+                                            <i class="fa fa-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <?php endforeach; ?>
+                            <?php endif; ?>
                         </tbody>
                         <tfoot>
-                        <tr>
-                            <th>Id</th>
-                            <th>{{ trans('block::blocks.online') }}</th>
-                            <th>{{ trans('block::blocks.name') }}</th>
-                            <th>{{ trans('block::blocks.shortcode') }}</th>
-                            <th>{{ trans('core::core.table.created at') }}</th>
-                            <th>{{ trans('core::core.table.actions') }}</th>
-                        </tr>
+                            <tr>
+                                <th>Id</th>
+                                <th>{{ trans('block::blocks.online') }}</th>
+                                <th>{{ trans('block::blocks.name') }}</th>
+                                <th>{{ trans('block::blocks.shortcode') }}</th>
+                                <th>{{ trans('core::core.table.created at') }}</th>
+                                <th>{{ trans('core::core.table.actions') }}</th>
+                            </tr>
                         </tfoot>
                     </table>
                     <!-- /.box-body -->
@@ -105,7 +106,7 @@
 
 @section('scripts')
     <script type="text/javascript">
-        $( document ).ready(function() {
+        $(document).ready(function () {
             $(document).keypressAction({
                 actions: [
                     { key: 'c', route: "<?= route('admin.block.block.create') ?>" }
@@ -117,15 +118,15 @@
     <script type="text/javascript">
         $(function () {
             $('.data-table').dataTable({
-                "paginate": true,
-                "lengthChange": true,
-                "filter": true,
-                "sort": true,
-                "info": true,
-                "autoWidth": true,
-                "order": [[ 0, "desc" ]],
-                "language": {
-                    "url": '<?php echo Module::asset("core:js/vendor/datatables/{$locale}.json") ?>'
+                'paginate': true,
+                'lengthChange': true,
+                'filter': true,
+                'sort': true,
+                'info': true,
+                'autoWidth': true,
+                'order': [[0, 'desc']],
+                'language': {
+                    'url': '<?php echo Module::asset("core:js/vendor/datatables/{$locale}.json") ?>'
                 }
             });
         });

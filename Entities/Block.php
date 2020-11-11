@@ -18,9 +18,13 @@ class Block extends Model
     use Translatable, PresentableTrait;
 
     protected $presenter = 'Modules\Block\Presenters\BlockPresenter';
+
     protected $table = 'block__blocks';
+
     public $translatedAttributes = ['online', 'body'];
+
     protected $fillable = ['name', 'online', 'body'];
+
     protected $casts = [
         'online' => 'bool',
     ];

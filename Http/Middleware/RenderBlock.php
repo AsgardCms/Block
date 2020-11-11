@@ -26,7 +26,7 @@ class RenderBlock
         }
 
         // if this is not a standard Response, return right away
-        if(!$response instanceof Response) {
+        if (! $response instanceof Response) {
             return $response;
         }
 
@@ -37,7 +37,9 @@ class RenderBlock
 
     /**
      * replaces all block shortcodes from the response HTML with the actual block body
-     * @param string $html
+     *
+     * @param  string  $html
+     *
      * @return string
      */
     private function replaceShortcodes($html)
@@ -54,6 +56,5 @@ class RenderBlock
         }
 
         return str_replace(array_keys($replaceBlocks), $replaceBlocks, $html);
-
     }
 }

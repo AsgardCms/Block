@@ -47,7 +47,8 @@ class BlockController extends AdminBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateBlockRequest $request
+     * @param  CreateBlockRequest  $request
+     *
      * @return Response
      */
     public function store(CreateBlockRequest $request)
@@ -61,7 +62,8 @@ class BlockController extends AdminBaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Block $block
+     * @param  Block  $block
+     *
      * @return Response
      */
     public function edit(Block $block)
@@ -72,8 +74,9 @@ class BlockController extends AdminBaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  Block $block
-     * @param  UpdateBlockRequest $request
+     * @param  Block  $block
+     * @param  UpdateBlockRequest  $request
+     *
      * @return Response
      */
     public function update(Block $block, UpdateBlockRequest $request)
@@ -92,7 +95,8 @@ class BlockController extends AdminBaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Block $block
+     * @param  Block  $block
+     *
      * @return Response
      */
     public function destroy(Block $block)

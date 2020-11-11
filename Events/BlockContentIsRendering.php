@@ -8,6 +8,7 @@ class BlockContentIsRendering
      * @var string The body of the page to render
      */
     private $body;
+
     private $original;
 
     public function __construct($body)
@@ -25,7 +26,7 @@ class BlockContentIsRendering
     }
 
     /**
-     * @param string $body
+     * @param  string  $body
      */
     public function setBody($body)
     {

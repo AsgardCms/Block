@@ -3,25 +3,22 @@
 namespace Modules\Block\Providers;
 
 use Illuminate\Foundation\AliasLoader;
+use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
-use Modules\Core\Events\LoadingBackendTranslations;
 use Modules\Block\Entities\Block;
 use Modules\Block\Events\Handlers\RegisterBlockSidebar;
 use Modules\Block\Facades\BlockFacade;
+use Modules\Block\Repositories\BlockRepository;
 use Modules\Block\Repositories\Cache\CacheBlockDecorator;
 use Modules\Block\Repositories\Eloquent\EloquentBlockRepository;
 use Modules\Core\Events\BuildingSidebar;
+use Modules\Core\Events\LoadingBackendTranslations;
 use Modules\Core\Traits\CanGetSidebarClassForModule;
 use Modules\Core\Traits\CanPublishConfiguration;
 
 class BlockServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration, CanGetSidebarClassForModule;
-    /**
-     * Indicates if loading of the provider is deferred.
-     * @var bool
-     */
-    protected $defer = false;
 
     /**
      * Register the service provider.
@@ -30,7 +27,10 @@ class BlockServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerBindings();
-        $this->registerFacade();
+        $this->app->booting(function () {
+            $loader = AliasLoader::getInstance();
+            $loader->alias('Block', BlockFacade::class);
+        });
 
         $this->app['events']->listen(
             BuildingSidebar::class,
@@ -38,7 +38,7 @@ class BlockServiceProvider extends ServiceProvider
         );
 
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
-            $event->load('blocks', array_dot(trans('block::blocks')));
+            $event->load('blocks', Arr::dot(trans('block::blocks')));
         });
     }
 
@@ -46,7 +46,7 @@ class BlockServiceProvider extends ServiceProvider
     {
         $this->publishConfig('block', 'permissions');
         $this->publishConfig('block', 'config');
-        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../Database/Migrations');
     }
 
     /**
@@ -55,28 +55,19 @@ class BlockServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array();
+        return [];
     }
 
     private function registerBindings()
     {
-        $this->app->bind(
-            'Modules\Block\Repositories\BlockRepository',
-            function () {
-                $repository = new EloquentBlockRepository(new Block());
+        $this->app->bind(BlockRepository::class, function () {
+            $repository = new EloquentBlockRepository(new Block());
 
-                if (! config('app.cache')) {
-                    return $repository;
-                }
-
-                return new CacheBlockDecorator($repository);
+            if (! config('app.cache')) {
+                return $repository;
             }
-        );
-    }
 
-    private function registerFacade()
-    {
-        $aliasLoader = AliasLoader::getInstance();
-        $aliasLoader->alias('Block', BlockFacade::class);
+            return new CacheBlockDecorator($repository);
+        });
     }
 }
