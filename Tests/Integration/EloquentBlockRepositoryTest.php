@@ -227,8 +227,10 @@ class EloquentBlockRepositoryTest extends BaseBlockTest
 
     /**
      * Create a block with random properties
-     * @param bool $statusEn
-     * @param bool $statusFr
+     *
+     * @param  bool  $statusEn
+     * @param  bool  $statusFr
+     *
      * @return mixed
      */
     private function createRandomBlock($statusEn = false, $statusFr = false)

@@ -3,7 +3,9 @@
 namespace Modules\Block\Repositories\Eloquent;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Str;
 use Modules\Block\Events\BlockIsCreating;
 use Modules\Block\Events\BlockIsUpdating;
 use Modules\Block\Events\BlockWasCreated;
@@ -14,7 +16,8 @@ use Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
 class EloquentBlockRepository extends EloquentBaseRepository implements BlockRepository
 {
     /**
-     * @param mixed $data
+     * @param  mixed  $data
+     *
      * @return mixed
      */
     public function create($data)
@@ -32,7 +35,8 @@ class EloquentBlockRepository extends EloquentBaseRepository implements BlockRep
 
     /**
      * @param $model
-     * @param  array $data
+     * @param  array  $data
+     *
      * @return object
      */
     public function update($model, $data)
@@ -52,7 +56,9 @@ class EloquentBlockRepository extends EloquentBaseRepository implements BlockRep
 
     /**
      * Get all online blocks in the given language
-     * @param string $lang
+     *
+     * @param  string  $lang
+     *
      * @return object
      */
     public function allOnlineInLang($lang)
@@ -65,7 +71,9 @@ class EloquentBlockRepository extends EloquentBaseRepository implements BlockRep
 
     /**
      * Get a block body by its name if it's online
-     * @param string $name
+     *
+     * @param  string  $name
+     *
      * @return string
      */
     public function get($name)
@@ -91,7 +99,8 @@ class EloquentBlockRepository extends EloquentBaseRepository implements BlockRep
 
     /**
      * Normalize the request data
-     * @param array $data
+     *
+     * @param  array  $data
      */
     private function sluggify(array &$data)
     {
@@ -100,12 +109,14 @@ class EloquentBlockRepository extends EloquentBaseRepository implements BlockRep
 
     /**
      * Make the name unique by appending a counter
-     * @param string $slug
+     *
+     * @param  string  $slug
+     *
      * @return string
      */
     private function makeNameUnique($slug)
     {
-        $slug = str_slug($slug);
+        $slug = Str::slug($slug);
 
         $list = $this->getExistingSlugs($slug);
 
@@ -118,23 +129,25 @@ class EloquentBlockRepository extends EloquentBaseRepository implements BlockRep
         }
 
         // map our list to keep only the increments
-        $len = strlen($slug . '-');
+        $len = strlen($slug.'-');
 
         array_walk($list, function (&$value, $key) use ($len) {
             $value = intval(substr($value, $len));
         });
 
-        return $slug . '-' . $this->findHighestIncrement($list);
+        return $slug.'-'.$this->findHighestIncrement($list);
     }
 
     /**
      * Get the existing models matching the given slug
-     * @param string $slug
+     *
+     * @param  string  $slug
+     *
      * @return array
      */
     private function getExistingSlugs($slug)
     {
-        $query = $this->model->where('name', 'LIKE', $slug . '%');
+        $query = $this->model->where('name', 'LIKE', $slug.'%');
 
         $list = $query->pluck('name', $this->model->getKeyName())->toArray();
 
@@ -143,7 +156,9 @@ class EloquentBlockRepository extends EloquentBaseRepository implements BlockRep
 
     /**
      * Check if given array is empty
-     * @param array $list
+     *
+     * @param  array  $list
+     *
      * @return bool
      */
     private function isEmptyArray(array $list)
@@ -153,8 +168,10 @@ class EloquentBlockRepository extends EloquentBaseRepository implements BlockRep
 
     /**
      * Check if the given slug is present in the given array
-     * @param string $slug
-     * @param array $list
+     *
+     * @param  string  $slug
+     * @param  array  $list
+     *
      * @return bool
      */
     private function isSlugInList($slug, array $list)
@@ -164,7 +181,9 @@ class EloquentBlockRepository extends EloquentBaseRepository implements BlockRep
 
     /**
      * Check if we have our model
+     *
      * @param $list
+     *
      * @return bool
      */
     private function isForModel($list)
@@ -174,8 +193,10 @@ class EloquentBlockRepository extends EloquentBaseRepository implements BlockRep
 
     /**
      * Check if the given slug is in the given list
-     * @param string $slug
-     * @param array $list
+     *
+     * @param  string  $slug
+     * @param  array  $list
+     *
      * @return bool
      */
     private function slugIsInList($slug, array $list)
@@ -196,12 +217,14 @@ class EloquentBlockRepository extends EloquentBaseRepository implements BlockRep
 
     /**
      * Check if the given model needs to be slugged
-     * @param object $model
-     * @param array $data
+     *
+     * @param  object  $model
+     * @param  array  $data
+     *
      * @return bool
      */
     private function needsSlugging($model, array $data)
     {
-        return $model->name != array_get($data, 'name');
+        return $model->name != Arr::get($data, 'name');
     }
 }

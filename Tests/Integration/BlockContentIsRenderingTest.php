@@ -11,7 +11,7 @@ class BlockContentIsRenderingTest extends BaseBlockTest
     public function it_can_change_final_content()
     {
         Event::listen(BlockContentIsRendering::class, function (BlockContentIsRendering $event) {
-            $event->setBody('<strong>' . $event->getOriginal() . '</strong>');
+            $event->setBody('<strong>'.$event->getOriginal().'</strong>');
         });
 
         $block = $this->block->create(['name' => 'testBlock', 'en' => ['body' => 'My Block Body'], 'fr' => ['body' => 'lorem fr']]);

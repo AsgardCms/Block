@@ -10,6 +10,7 @@ class BlockWasCreated
      * @var Block
      */
     public $block;
+
     /**
      * @var array The posted data through the form request
      */

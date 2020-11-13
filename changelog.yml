@@ -1,29 +1,29 @@
 url: https://github.com/AsgardCms/Block
 versions:
-    "3.0.0":
-        added:
-            - AsgardCMS v3 support
-            - Read the sidebar position from configuration file, default to 15
-        changed:
-            - Removed usages of <code>URL::route()</code> in favor of <code>route()</code>
-    "2.2.0":
-        changed:
-            - Register the blog sidebar via event handler
-    "2.1.2":
-        added:
-            - Moving translations from Translation module back to Block
-    "2.1.0":
-        added:
-            - Creating new hook when a block is creating
-            - Creating new hook when a block is updating
-            - Adding new <code>BlockContentIsRendering</code> hook
-        changed:
-            - Using new <code>@editor</code> blade directive for wysiwyg
-            - Block was created event now gets the block instance as first argument
-            - Block was updated event now gets the block instance as first argument
-    "2.0.0":
-        added:
-            - Laravel 5.4 compatibility
-        changed:
-            - Using new more flexible way of handle permissions via middleware
-            - Avoiding usage of laracasts/flash dependency
+  "3.0.0":
+    added:
+      - AsgardCMS v3 support
+      - Read the sidebar position from configuration file, default to 15
+    changed:
+      - Removed usages of <code>URL::route()</code> in favor of <code>route()</code>
+  "2.2.0":
+    changed:
+      - Register the blog sidebar via event handler
+  "2.1.2":
+    added:
+      - Moving translations from Translation module back to Block
+  "2.1.0":
+    added:
+      - Creating new hook when a block is creating
+      - Creating new hook when a block is updating
+      - Adding new <code>BlockContentIsRendering</code> hook
+    changed:
+      - Using new <code>@editor</code> blade directive for wysiwyg
+      - Block was created event now gets the block instance as first argument
+      - Block was updated event now gets the block instance as first argument
+  "2.0.0":
+    added:
+      - Laravel 5.4 compatibility
+    changed:
+      - Using new more flexible way of handle permissions via middleware
+      - Avoiding usage of laracasts/flash dependency
